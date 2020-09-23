@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2 SQL Statement &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3 Fundamental Concepts" href="Lecture_03_Fundamental_Concepts.html" />
+    <link rel="prev" title="1 Installation" href="Lecture_01_Introduction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Lecture notes for Understanding SQL, Bill Weinman</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_01_Introduction.html">
+   1 Installation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2 SQL Statement
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_03_Fundamental_Concepts.html">
+   3 Fundamental Concepts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_04_Relationships.html">
+   4 Relationships
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_05_Strings.html">
+   5 Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_06_Numbers.html">
+   6 Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_07_Dates_Times.html">
+   7 Dates and Times
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_08_Aggregates.html">
+   8 Aggregates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_08_Aggregates.html#distinct-aggregates">
+   8.3 DISTINCT Aggregates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_09_Transactions.html">
+   9 Transactions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_10_Triggers.html">
+   10 Triggers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_11_Views_Subselects.html">
+   11 Views and Subselects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_12_CRUD_Application.html">
+   12 A Simple CRUD Application
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Lecture_02_SQL_Statement.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/makto-toruk/course_sql_0"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/makto-toruk/course_sql_0/issues/new?title=Issue%20on%20page%20%2FLecture_02_SQL_Statement.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_02_SQL_Statement.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/makto-toruk/course_sql_0/master?urlpath=tree/Lecture_02_SQL_Statement.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/makto-toruk/course_sql_0/blob/master/Lecture_02_SQL_Statement.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sql-overview">
+   2.1 SQL Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#database-organization">
+   2.2 Database Organization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#select">
+   2.3 SELECT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where">
+   2.4 WHERE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#columns">
+   2.5 Columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#count">
+   2.6 COUNT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#insert">
+   2.7 INSERT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update">
+   2.8 UPDATE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#delete">
+   2.9 DELETE
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="sql-statement">
+<h1>2 SQL Statement<a class="headerlink" href="#sql-statement" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sql-overview">
+<h2>2.1 SQL Overview<a class="headerlink" href="#sql-overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>SQL statements are terminated with <code class="docutils literal notranslate"><span class="pre">;</span></code></p></li>
+</ul>
+<p>Example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">Countries</span> <span class="pre">WHERE</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe';</span></code></p>
+<ul>
+<li><p>FROM clause: <code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">Countries</span></code></p></li>
+<li><p>WHERE clause: <code class="docutils literal notranslate"><span class="pre">WHERE</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe';</span></code> consists of logical expression.
+These parts together constitute a statement.</p></li>
+</ul>
+</li>
+<li><p>CRUD: 4 fundamental database system functions. Create Read Update Delete.</p></li>
+<li><p>SELECT: all queries that return values. (R in CRUD)</p></li>
+<li><p>INSERT: add a row to a table (C in CRUD).</p>
+<ul>
+<li><p>example: <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">Customer</span> <span class="pre">(name,</span> <span class="pre">city,</span> <span class="pre">state)</span> <span class="pre">VALUES</span> <span class="pre">('Jimi</span> <span class="pre">Hendrix',</span> <span class="pre">'Renton',</span> <span class="pre">'WA');</span></code></p></li>
+<li><p>Broken into two lines to improve readability.</p></li>
+</ul>
+</li>
+<li><p>UPDATE: to change data (U in CRUD)</p>
+<ul>
+<li><p>example: <code class="docutils literal notranslate"><span class="pre">UPDATE</span> <span class="pre">customer</span>&#160; <span class="pre">SET</span>&#160;&#160;&#160; <span class="pre">address</span> <span class="pre">=</span> <span class="pre">'123</span> <span class="pre">Music</span> <span class="pre">Avenue',</span>&#160;&#160;&#160; <span class="pre">zip</span> <span class="pre">=</span> <span class="pre">'98056'</span>&#160; <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></li>
+</ul>
+</li>
+<li><p>DELETE: remove rows in a table (D in CRUD).</p>
+<ul>
+<li><p>example: <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">FROM</span> <span class="pre">Customer</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">4;</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="database-organization">
+<h2>2.2 Database Organization<a class="headerlink" href="#database-organization" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>SQL is a language for managing a relational database.</p></li>
+<li><p>Relational database: organized in two-dimensional tables (rows and columns).</p></li>
+<li><p>Database can contain multiple tables.</p></li>
+<li><p>Table contains rows and columns.</p></li>
+<li><p>A row is an individual <em>record</em> in a table.</p></li>
+<li><p>A column is a <em>field</em>.</p></li>
+<li><p>Each row in a table has a unique key. Sometimes hidden, but table must have one.</p></li>
+<li><p>Tables are related by keys.</p>
+<ul>
+<li><p>example table: id | item_id | cust_id | quant | price
+where item_id and cust_id are keys of other tables.</p></li>
+<li><p>helps use joint queries.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="select">
+<h2>2.3 SELECT<a class="headerlink" href="#select" title="Permalink to this headline">¶</a></h2>
+<p>examples:
+– world.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">'Hello,</span> <span class="pre">World';</span></code></p>
+<ul>
+<li><p>SELECT is a key word. Doesn’t have to be capitalized, but common practice.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">'Hello,</span> <span class="pre">World'</span> <span class="pre">AS</span> <span class="pre">Result;</span></code></p>
+<ul>
+<li><p>Loads ‘Hello, World’ under column Result</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
+<ul>
+<li><ul>
+<li><p>indicates select all columns</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name;</span></code></p>
+<ul>
+<li><p>ORDER BY clause</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">LifeExpectancy</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name;</span></code></p>
+<ul>
+<li><p>selected columns</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">LifeExpectancy</span> <span class="pre">AS</span> <span class="pre">&quot;Life</span> <span class="pre">Expectancy&quot;</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name;</span></code></p>
+<ul>
+<li><p>if LifeExpectancy isn’t readable, load AS. delimit using double quotes (since there is a space). Single quotes are typically used for literal string.</p></li>
+<li><p>some systems allow ignoring the keyword <code class="docutils literal notranslate"><span class="pre">AS</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">LifeExpectancy</span> <span class="pre">&quot;Life</span> <span class="pre">Expectancy&quot;</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name;</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="where">
+<h2>2.4 WHERE<a class="headerlink" href="#where" title="Permalink to this headline">¶</a></h2>
+<p>Selecting Rows
+– world.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
+<ul>
+<li><p>selects every row with the specified columns.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe';</span></code></p>
+<ul>
+<li><p>limits to rows WHERE continent is Europe. Europe is a literal string, so use single quotes. Without single quotes, it looks for column with name Europe.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe'</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name;</span></code></p>
+<ul>
+<li><p>can ORDER as usual.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe'</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name</span> <span class="pre">LIMIT</span> <span class="pre">5;</span></code></p>
+<ul>
+<li><p>limit to 5 rows.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe'</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name</span> <span class="pre">LIMIT</span> <span class="pre">5</span> <span class="pre">OFFSET</span> <span class="pre">5;</span></code></p>
+<ul>
+<li><p>starts the limit after OFFSET (or after the first 5).</p></li>
+</ul>
+</li>
+<li><p>ORDER BY has to be <em>after</em> any WHERE clause</p></li>
+<li><p>LIMIT has to be last</p></li>
+<li><p>FROM needs to be first</p></li>
+</ul>
+</div>
+<div class="section" id="columns">
+<h2>2.5 Columns<a class="headerlink" href="#columns" title="Permalink to this headline">¶</a></h2>
+<p>Selecting Columns
+– world.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name</span> <span class="pre">AS</span> <span class="pre">Country,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name</span> <span class="pre">AS</span> <span class="pre">Country,</span> <span class="pre">Region,</span> <span class="pre">Continent</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p></li>
+</ul>
+<p>We’ve seen all these before.</p>
+</div>
+<div class="section" id="count">
+<h2>2.6 COUNT<a class="headerlink" href="#count" title="Permalink to this headline">¶</a></h2>
+<p>Counting Rows
+– world.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
+<ul>
+<li><p>counts all the rows</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Population</span> <span class="pre">&gt;</span> <span class="pre">1000000;</span></code></p>
+<ul>
+<li><p>counts all the rows where population &gt; 1000000</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Population</span> <span class="pre">&gt;</span> <span class="pre">100000000;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Population</span> <span class="pre">&gt;</span> <span class="pre">100000000</span> <span class="pre">AND</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe'</span> <span class="pre">;</span></code></p>
+<ul>
+<li><p>can add conditiosn other than population</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
+<ul>
+<li><p>this counts ALL rows</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(LifeExpectancy)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
+<ul>
+<li><p>only counts rows where “LifeExpectancy” has some data.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="insert">
+<h2>2.7 INSERT<a class="headerlink" href="#insert" title="Permalink to this headline">¶</a></h2>
+<p>Inserting Data
+– test.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">customer</span> <span class="pre">(name,</span> <span class="pre">address,</span> <span class="pre">city,</span> <span class="pre">state,</span> <span class="pre">zip)</span>&#160; <span class="pre">VALUES</span> <span class="pre">('Fred</span> <span class="pre">Flintstone',</span> <span class="pre">'123</span> <span class="pre">Cobblestone</span> <span class="pre">Way',</span> <span class="pre">'Bedrock',</span> <span class="pre">'CA',</span> <span class="pre">'91234');</span></code></p>
+<ul>
+<li><p>adds a new row!</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">customer</span> <span class="pre">(name,</span> <span class="pre">city,</span> <span class="pre">state)</span>&#160; <span class="pre">VALUES</span> <span class="pre">('Jimi</span> <span class="pre">Hendrix',</span> <span class="pre">'Renton',</span> <span class="pre">'WA');</span></code></p>
+<ul>
+<li><p>can insert a row and populate only some columns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(address)</span> <span class="pre">FROM</span> <span class="pre">customer</span></code> returns 4</p></li>
+</ul>
+</li>
+<li><p>Note: can use id as a field in insert</p></li>
+<li><p>but if id exists, then SQL returns error. i.e, insert can’t overwrite</p></li>
+</ul>
+</div>
+<div class="section" id="update">
+<h2>2.8 UPDATE<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<p>Updating Data (or Changing data)
+– test.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span> <span class="pre">customer</span> <span class="pre">SET</span> <span class="pre">address</span> <span class="pre">=</span> <span class="pre">'123</span> <span class="pre">Music</span> <span class="pre">Avenue',</span> <span class="pre">zip</span> <span class="pre">=</span> <span class="pre">'98056'</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">5;</span></code></p>
+<ul>
+<li><p>or <code class="docutils literal notranslate"><span class="pre">UPDA</span> <span class="pre">TE</span> <span class="pre">customer</span> <span class="pre">SET</span> <span class="pre">address</span> <span class="pre">=</span> <span class="pre">'123</span> <span class="pre">Music</span> <span class="pre">Avenue',</span> <span class="pre">zip</span> <span class="pre">=</span> <span class="pre">'98056'</span> <span class="pre">WHERE</span> <span class="pre">name</span> <span class="pre">=</span> <span class="pre">'Jimi</span> <span class="pre">Hendrix';</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span> <span class="pre">customer</span> <span class="pre">SET</span> <span class="pre">address</span> <span class="pre">=</span> <span class="pre">'2603</span> <span class="pre">S</span> <span class="pre">Washington</span> <span class="pre">St',</span> <span class="pre">zip</span> <span class="pre">=</span> <span class="pre">'98056'</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span> <span class="pre">customer</span> <span class="pre">SET</span> <span class="pre">address</span> <span class="pre">=</span> <span class="pre">NULL,</span> <span class="pre">zip</span> <span class="pre">=</span> <span class="pre">NULL</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">5;</span></code></p>
+<ul>
+<li><p>NULL is a special value (no data)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="delete">
+<h2>2.9 DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<p>Deleting Data
+– test.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">4;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">FROM</span> <span class="pre">customer</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">4;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">FROM</span> <span class="pre">customer</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer;</span></code></p></li>
+<li><p>Note: if you want to delete an entry in a column, UPDATE to NULL</p></li>
+<li><p>If you want to delete an entire row, then use DELETE</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Lecture_01_Introduction.html" title="previous page">1 Installation</a>
+    <a class='right-next' id="next-link" href="Lecture_03_Fundamental_Concepts.html" title="next page">3 Fundamental Concepts</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manasij Venkatesh<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

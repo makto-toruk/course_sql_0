@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4 Relationships &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5 Strings" href="Lecture_05_Strings.html" />
+    <link rel="prev" title="3 Fundamental Concepts" href="Lecture_03_Fundamental_Concepts.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Lecture notes for Understanding SQL, Bill Weinman</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_01_Introduction.html">
+   1 Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_02_SQL_Statement.html">
+   2 SQL Statement
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_03_Fundamental_Concepts.html">
+   3 Fundamental Concepts
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4 Relationships
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_05_Strings.html">
+   5 Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_06_Numbers.html">
+   6 Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_07_Dates_Times.html">
+   7 Dates and Times
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_08_Aggregates.html">
+   8 Aggregates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_08_Aggregates.html#distinct-aggregates">
+   8.3 DISTINCT Aggregates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_09_Transactions.html">
+   9 Transactions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_10_Triggers.html">
+   10 Triggers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_11_Views_Subselects.html">
+   11 Views and Subselects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_12_CRUD_Application.html">
+   12 A Simple CRUD Application
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Lecture_04_Relationships.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/makto-toruk/course_sql_0"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/makto-toruk/course_sql_0/issues/new?title=Issue%20on%20page%20%2FLecture_04_Relationships.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_04_Relationships.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/makto-toruk/course_sql_0/master?urlpath=tree/Lecture_04_Relationships.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/makto-toruk/course_sql_0/blob/master/Lecture_04_Relationships.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#join-fundamentals">
+   4.1 JOIN fundamentals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#join-statements">
+   4.2 JOIN statements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#junction">
+   4.3 Junction
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="relationships">
+<h1>4 Relationships<a class="headerlink" href="#relationships" title="Permalink to this headline">¶</a></h1>
+<p>Tables often contain information related to another tables. You can perform operations across tables using JOIN</p>
+<div class="section" id="join-fundamentals">
+<h2>4.1 JOIN fundamentals<a class="headerlink" href="#join-fundamentals" title="Permalink to this headline">¶</a></h2>
+<p>– test.db</p>
+<ul class="simple">
+<li><p>Inner join: default. Includes rows from both tables where the JOIN condition is met.
+<img src="figures/inner_join.png" width="400"></p></li>
+<li><p>Outer join:</p>
+<ul>
+<li><p>left outer join: rows where the condition is met + all the rows from the table on the left where condition is not met
+<img src="figures/left_outer_join.png" width="400"></p></li>
+<li><p>right outer join: similar to above. Can be rewritten as a left outer join by swapping the order
+<img src="figures/right_outer_join.png" width="400"></p></li>
+<li><p>full outer join: combines left and right joins
+<img src="figures/full_outer_join.png" width="400"></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="join-statements">
+<h2>4.2 JOIN statements<a class="headerlink" href="#join-statements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>join example tables, left and right</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">left</span> <span class="pre">(</span> <span class="pre">id</span> <span class="pre">INTEGER,</span> <span class="pre">description</span> <span class="pre">TEXT</span> <span class="pre">);</span> <span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">right</span> <span class="pre">(</span> <span class="pre">id</span> <span class="pre">INTEGER,</span> <span class="pre">description</span> <span class="pre">TEXT</span> <span class="pre">);</span></code>
+<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">left</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">1,</span> <span class="pre">'left</span> <span class="pre">01'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">left</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">2,</span> <span class="pre">'left</span> <span class="pre">02'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">left</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">3,</span> <span class="pre">'left</span> <span class="pre">03'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">left</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">4,</span> <span class="pre">'left</span> <span class="pre">04'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">left</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">5,</span> <span class="pre">'left</span> <span class="pre">05'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">left</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">6,</span> <span class="pre">'left</span> <span class="pre">06'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">left</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">7,</span> <span class="pre">'left</span> <span class="pre">07'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">left</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">8,</span> <span class="pre">'left</span> <span class="pre">08'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">left</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">9,</span> <span class="pre">'left</span> <span class="pre">09'</span> <span class="pre">);</span></code>
+<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">right</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">6,</span> <span class="pre">'right</span> <span class="pre">06'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">right</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">7,</span> <span class="pre">'right</span> <span class="pre">07'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">right</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">8,</span> <span class="pre">'right</span> <span class="pre">08'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">right</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">9,</span> <span class="pre">'right</span> <span class="pre">09'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">right</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">10,</span> <span class="pre">'right</span> <span class="pre">10'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">right</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">11,</span> <span class="pre">'right</span> <span class="pre">11'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">right</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">11,</span> <span class="pre">'right</span> <span class="pre">12'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">right</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">11,</span> <span class="pre">'right</span> <span class="pre">13'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">right</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">11,</span> <span class="pre">'right</span> <span class="pre">14'</span> <span class="pre">);</span></code>
+<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">left;</span> <span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">right;</span></code>
+<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">l.description</span> <span class="pre">AS</span> <span class="pre">left,</span> <span class="pre">r.description</span> <span class="pre">AS</span> <span class="pre">right</span> <span class="pre">FROM</span> <span class="pre">left</span> <span class="pre">AS</span> <span class="pre">l</span> <span class="pre">JOIN</span> <span class="pre">right</span> <span class="pre">AS</span> <span class="pre">r</span> <span class="pre">ON</span> <span class="pre">l.id</span> <span class="pre">=</span> <span class="pre">r.id</span> <span class="pre">;</span></code></p>
+<ul>
+<li><p>The joint query. Inner join where the left and right IDs match, show their descriptions. In the first line, you provide alias for the two columns since they have the same column</p></li>
+</ul>
+</li>
+<li><p>to do left outer join, <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span> <span class="pre">right</span> <span class="pre">AS</span> <span class="pre">r</span> <span class="pre">ON</span> <span class="pre">l.id</span> <span class="pre">=</span> <span class="pre">r.id</span></code>
+<br><br></p></li>
+<li><p>restore database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span> <span class="pre">left;</span> <span class="pre">DROP</span> <span class="pre">TABLE</span> <span class="pre">right;</span></code>
+<br><br></p></li>
+<li><p>sale example</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">sale;</span> <span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">item;</span></code>
+<br><br></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">s.id</span> <span class="pre">AS</span> <span class="pre">sale,</span> <span class="pre">i.name,</span> <span class="pre">s.price</span>&#160; <span class="pre">FROM</span> <span class="pre">sale</span> <span class="pre">AS</span> <span class="pre">s</span> <span class="pre">JOIN</span> <span class="pre">item</span> <span class="pre">AS</span> <span class="pre">i</span> <span class="pre">ON</span> <span class="pre">s.item_id</span> <span class="pre">=</span> <span class="pre">i.id</span> <span class="pre">;</span></code></p>
+<ul>
+<li><p>slightly better example. Obtain sale ID, name of item and price from two different tables (sale and item)
+<br><br></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">s.id</span> <span class="pre">AS</span> <span class="pre">sale,</span> <span class="pre">s.date,</span> <span class="pre">i.name,</span> <span class="pre">i.description,</span> <span class="pre">s.price</span>&#160; <span class="pre">FROM</span> <span class="pre">sale</span> <span class="pre">AS</span> <span class="pre">s</span> <span class="pre">JOIN</span> <span class="pre">item</span> <span class="pre">AS</span> <span class="pre">i</span> <span class="pre">ON</span> <span class="pre">s.item_id</span> <span class="pre">=</span> <span class="pre">i.id</span> <span class="pre">;</span></code>
+<br><br></p></li>
+</ul>
+</div>
+<div class="section" id="junction">
+<h2>4.3 Junction<a class="headerlink" href="#junction" title="Permalink to this headline">¶</a></h2>
+<p>In practice, tables have many-to-many relationships.
+– test.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">c.name</span> <span class="pre">AS</span> <span class="pre">Cust,</span> <span class="pre">c.zip,</span> <span class="pre">i.name</span> <span class="pre">AS</span> <span class="pre">Item,</span> <span class="pre">i.description,</span> <span class="pre">s.quantity</span> <span class="pre">AS</span> <span class="pre">Quan,</span> <span class="pre">s.price</span> <span class="pre">AS</span> <span class="pre">Price</span> <span class="pre">FROM</span> <span class="pre">sale</span> <span class="pre">AS</span> <span class="pre">s</span> <span class="pre">JOIN</span> <span class="pre">item</span> <span class="pre">AS</span> <span class="pre">i</span> <span class="pre">ON</span> <span class="pre">s.item_id</span> <span class="pre">=</span> <span class="pre">i.id</span> <span class="pre">JOIN</span> <span class="pre">customer</span> <span class="pre">AS</span> <span class="pre">c</span> <span class="pre">ON</span> <span class="pre">s.customer_id</span> <span class="pre">=</span> <span class="pre">c.id</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Cust,</span> <span class="pre">Item</span> <span class="pre">;</span></code></p>
+<ul>
+<li><p>combines cutomer, sale and item tables</p></li>
+<li><p>these can be ordered as well</p></li>
+</ul>
+</li>
+<li><p>What if you want your table to include a customer without sales?</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">customer</span> <span class="pre">(</span> <span class="pre">name</span> <span class="pre">)</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'Jane</span> <span class="pre">Smith'</span> <span class="pre">);</span> <span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer;</span></code></p></li>
+<li><p>Use left join to join other tables <em>with Customer</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">c.name</span> <span class="pre">AS</span> <span class="pre">Cust,</span> <span class="pre">c.zip,</span> <span class="pre">i.name</span> <span class="pre">AS</span> <span class="pre">Item,</span> <span class="pre">i.description,</span> <span class="pre">s.quantity</span> <span class="pre">AS</span> <span class="pre">Quan,</span> <span class="pre">s.price</span> <span class="pre">AS</span> <span class="pre">Price</span> <span class="pre">FROM</span> <span class="pre">customer</span> <span class="pre">AS</span> <span class="pre">c</span> <span class="pre">LEFT</span> <span class="pre">JOIN</span> <span class="pre">sale</span> <span class="pre">AS</span> <span class="pre">s</span> <span class="pre">ON</span> <span class="pre">s.customer_id</span> <span class="pre">=</span> <span class="pre">c.id</span> <span class="pre">LEFT</span> <span class="pre">JOIN</span> <span class="pre">item</span> <span class="pre">AS</span> <span class="pre">i</span> <span class="pre">ON</span> <span class="pre">s.item_id</span> <span class="pre">=</span> <span class="pre">i.id</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Cust,</span> <span class="pre">Item</span> <span class="pre">;</span></code></p>
+<ul>
+<li><p>This is amazing. It adds multiple sale entries for customers in separate rows.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Lecture_03_Fundamental_Concepts.html" title="previous page">3 Fundamental Concepts</a>
+    <a class='right-next' id="next-link" href="Lecture_05_Strings.html" title="next page">5 Strings</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manasij Venkatesh<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

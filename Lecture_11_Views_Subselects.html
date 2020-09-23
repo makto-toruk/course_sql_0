@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11 Views and Subselects &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="12 A Simple CRUD Application" href="Lecture_12_CRUD_Application.html" />
+    <link rel="prev" title="10 Triggers" href="Lecture_10_Triggers.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Lecture notes for Understanding SQL, Bill Weinman</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_01_Introduction.html">
+   1 Installation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_02_SQL_Statement.html">
+   2 SQL Statement
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_03_Fundamental_Concepts.html">
+   3 Fundamental Concepts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_04_Relationships.html">
+   4 Relationships
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_05_Strings.html">
+   5 Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_06_Numbers.html">
+   6 Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_07_Dates_Times.html">
+   7 Dates and Times
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_08_Aggregates.html">
+   8 Aggregates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_08_Aggregates.html#distinct-aggregates">
+   8.3 DISTINCT Aggregates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_09_Transactions.html">
+   9 Transactions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_10_Triggers.html">
+   10 Triggers
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   11 Views and Subselects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture_12_CRUD_Application.html">
+   12 A Simple CRUD Application
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Lecture_11_Views_Subselects.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/makto-toruk/course_sql_0"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/makto-toruk/course_sql_0/issues/new?title=Issue%20on%20page%20%2FLecture_11_Views_Subselects.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_11_Views_Subselects.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/makto-toruk/course_sql_0/master?urlpath=tree/Lecture_11_Views_Subselects.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/makto-toruk/course_sql_0/blob/master/Lecture_11_Views_Subselects.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-subselect">
+   11.1 Simple Subselect
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#searching-within-a-result-set">
+   11.2 searching within a result set
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-view">
+   11.3 Creating a view
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joined-view">
+   11.4 Joined view
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="views-and-subselects">
+<h1>11 Views and Subselects<a class="headerlink" href="#views-and-subselects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="simple-subselect">
+<h2>11.1 Simple Subselect<a class="headerlink" href="#simple-subselect" title="Permalink to this headline">¶</a></h2>
+<p>– world.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">t</span> <span class="pre">(</span> <span class="pre">a</span> <span class="pre">TEXT,</span> <span class="pre">b</span> <span class="pre">TEXT</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">t</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'NY0123',</span> <span class="pre">'US4567'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">t</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'AZ9437',</span> <span class="pre">'GB1234'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">t</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'CA1279',</span> <span class="pre">'FR5678'</span> <span class="pre">);</span> <span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">t;</span></code></p></li>
+</ul>
+<p>-<code class="docutils literal notranslate"> <span class="pre">SELECT</span> <span class="pre">SUBSTR(a,</span> <span class="pre">1,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">State,</span> <span class="pre">SUBSTR(a,</span> <span class="pre">3)</span> <span class="pre">AS</span> <span class="pre">SCode,</span>&#160; <span class="pre">SUBSTR(b,</span> <span class="pre">1,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">Country,</span> <span class="pre">SUBSTR(b,</span> <span class="pre">3)</span> <span class="pre">AS</span> <span class="pre">CCode</span> <span class="pre">FROM</span> <span class="pre">t;</span></code>
+- This is a straight statement. It uses substrings to list table information in more columns</p>
+<ul class="simple">
+<li><p>Here’s the interesting part. We can use the above as a datasource to SELECT from, making it a SUBSELECT. Example:
+-<code class="docutils literal notranslate"> <span class="pre">SELECT</span> <span class="pre">co.Name,</span> <span class="pre">ss.CCode</span> <span class="pre">FROM</span> <span class="pre">(</span>&#160;&#160; <span class="pre">SELECT</span> <span class="pre">SUBSTR(a,</span> <span class="pre">1,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">State,</span> <span class="pre">SUBSTR(a,</span> <span class="pre">3)</span> <span class="pre">AS</span> <span class="pre">SCode,</span>&#160;&#160;&#160;&#160; <span class="pre">SUBSTR(b,</span> <span class="pre">1,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">Country,</span> <span class="pre">SUBSTR(b,</span> <span class="pre">3)</span> <span class="pre">AS</span> <span class="pre">CCode</span> <span class="pre">FROM</span> <span class="pre">t</span> <span class="pre">)</span> <span class="pre">AS</span> <span class="pre">ss</span> <span class="pre">JOIN</span> <span class="pre">Country</span> <span class="pre">AS</span> <span class="pre">co</span>&#160;&#160; <span class="pre">ON</span> <span class="pre">co.Code2</span> <span class="pre">=</span> <span class="pre">ss.Country</span> <span class="pre">;</span></code></p></li>
+<li><p>This seems like it could be really useful for my work.</p></li>
+</ul>
+</div>
+<div class="section" id="searching-within-a-result-set">
+<h2>11.2 searching within a result set<a class="headerlink" href="#searching-within-a-result-set" title="Permalink to this headline">¶</a></h2>
+<p>– album.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">DISTINCT</span> <span class="pre">album_id</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">WHERE</span> <span class="pre">duration</span> <span class="pre">&lt;=</span> <span class="pre">90;</span></code></p>
+<ul>
+<li><p>returns album IDs. But what albums are they?</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">album</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">IN</span> <span class="pre">(SELECT</span> <span class="pre">DISTINCT</span> <span class="pre">album_id</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">WHERE</span> <span class="pre">duration</span> <span class="pre">&lt;=</span> <span class="pre">90)</span> <span class="pre">;</span></code></p></li>
+<li><p>To get more details about all the the tracks in these albums:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">album,</span> <span class="pre">a.artist,</span> <span class="pre">t.track_number</span> <span class="pre">AS</span> <span class="pre">seq,</span> <span class="pre">t.title,</span> <span class="pre">t.duration</span> <span class="pre">AS</span> <span class="pre">secs</span> <span class="pre">FROM</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span> <span class="pre">JOIN</span> <span class="pre">track</span> <span class="pre">AS</span> <span class="pre">t</span>&#160;&#160; <span class="pre">ON</span> <span class="pre">t.album_id</span> <span class="pre">=</span> <span class="pre">a.id</span> <span class="pre">WHERE</span> <span class="pre">a.id</span> <span class="pre">IN</span> <span class="pre">(SELECT</span> <span class="pre">DISTINCT</span> <span class="pre">album_id</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">WHERE</span> <span class="pre">duration</span> <span class="pre">&lt;=</span> <span class="pre">90)</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">a.title,</span> <span class="pre">t.track_number</span> <span class="pre">;</span></code></p></li>
+<li><p>What if we want only those two tracks?</p>
+<ul>
+<li><p>JOIN on the subselect
+-<code class="docutils literal notranslate"> <span class="pre">SELECT</span> <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">album,</span> <span class="pre">a.artist,</span> <span class="pre">t.track_number</span> <span class="pre">AS</span> <span class="pre">seq,</span> <span class="pre">t.title,</span> <span class="pre">t.duration</span> <span class="pre">AS</span> <span class="pre">secs</span> <span class="pre">FROM</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span> <span class="pre">JOIN</span> <span class="pre">(</span> <span class="pre">SELECT</span> <span class="pre">DISTINCT</span> <span class="pre">album_id,</span> <span class="pre">track_number,</span> <span class="pre">duration,</span> <span class="pre">title</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">WHERE</span> <span class="pre">duration</span> <span class="pre">&lt;=</span> <span class="pre">90</span> <span class="pre">)</span> <span class="pre">AS</span> <span class="pre">t</span> <span class="pre">ON</span> <span class="pre">t.album_id</span> <span class="pre">=</span> <span class="pre">a.id</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">a.title,</span> <span class="pre">t.track_number</span> <span class="pre">;</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="creating-a-view">
+<h2>11.3 Creating a view<a class="headerlink" href="#creating-a-view" title="Permalink to this headline">¶</a></h2>
+<p>– album.db</p>
+<p>A view is effectively a saved table.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">album_id,</span> <span class="pre">title,</span> <span class="pre">track_number,</span>&#160; <span class="pre">duration</span> <span class="pre">/</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">m,</span> <span class="pre">duration</span> <span class="pre">%</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">s</span> <span class="pre">FROM</span> <span class="pre">track;</span></code></p></li>
+<li><p>A view can be saved in the database instead of creating a new table.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">VIEW</span> <span class="pre">trackView</span> <span class="pre">AS</span> <span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">album_id,</span> <span class="pre">title,</span> <span class="pre">track_number,</span>&#160;&#160;&#160; <span class="pre">duration</span> <span class="pre">/</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">m,</span> <span class="pre">duration</span> <span class="pre">%</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">s</span> <span class="pre">FROM</span> <span class="pre">track;</span></code></p></li>
+<li><p>When you’re done, drop the view as: <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">VIEW</span> <span class="pre">IF</span> <span class="pre">EXISTS</span> <span class="pre">trackView;</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="joined-view">
+<h2>11.4 Joined view<a class="headerlink" href="#joined-view" title="Permalink to this headline">¶</a></h2>
+<p>– album.db</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">a.artist</span> <span class="pre">AS</span> <span class="pre">artist,</span>&#160;&#160; <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">album,</span>&#160;&#160; <span class="pre">t.title</span> <span class="pre">AS</span> <span class="pre">track,</span>&#160;&#160; <span class="pre">t.track_number</span> <span class="pre">AS</span> <span class="pre">trackno,</span>&#160;&#160; <span class="pre">t.duration</span> <span class="pre">/</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">m,</span>&#160;&#160; <span class="pre">t.duration</span> <span class="pre">%</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">s</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">AS</span> <span class="pre">t</span>&#160;&#160; <span class="pre">JOIN</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span>&#160;&#160;&#160;&#160; <span class="pre">ON</span> <span class="pre">a.id</span> <span class="pre">=</span> <span class="pre">t.album_id</span> <span class="pre">;</span></code></p>
+<ul>
+<li><p>Select always returns a table</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">VIEW</span> <span class="pre">joinedAlbum</span> <span class="pre">AS</span> <span class="pre">SELECT</span> <span class="pre">a.artist</span> <span class="pre">AS</span> <span class="pre">artist,</span>&#160;&#160;&#160;&#160; <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">album,</span>&#160;&#160;&#160;&#160; <span class="pre">t.title</span> <span class="pre">AS</span> <span class="pre">track,</span>&#160;&#160;&#160;&#160; <span class="pre">t.track_number</span> <span class="pre">AS</span> <span class="pre">trackno,</span>&#160;&#160;&#160;&#160; <span class="pre">t.duration</span> <span class="pre">/</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">m,</span>&#160;&#160;&#160;&#160; <span class="pre">t.duration</span> <span class="pre">%</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">s</span>&#160;&#160; <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">AS</span> <span class="pre">t</span>&#160;&#160; <span class="pre">JOIN</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span>&#160;&#160;&#160;&#160; <span class="pre">ON</span> <span class="pre">a.id</span> <span class="pre">=</span> <span class="pre">t.album_id</span> <span class="pre">;</span></code></p>
+<ul>
+<li><p>That table can be saved as a view.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">artist,</span> <span class="pre">album,</span> <span class="pre">track,</span> <span class="pre">trackno,</span>&#160;&#160; <span class="pre">m</span> <span class="pre">||</span> <span class="pre">':'</span> <span class="pre">||</span> <span class="pre">substr('00'</span> <span class="pre">||</span> <span class="pre">s,</span> <span class="pre">-2,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">duration</span>&#160;&#160; <span class="pre">FROM</span> <span class="pre">joinedAlbum;</span></code></p>
+<ul>
+<li><p>and then a complex query can be run on that view.</p></li>
+<li><p>recall <code class="docutils literal notranslate"><span class="pre">||</span></code> is concatenation in SQLite</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">00</span></code> is just a trick to convert into format mm:ss</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Lecture_10_Triggers.html" title="previous page">10 Triggers</a>
+    <a class='right-next' id="next-link" href="Lecture_12_CRUD_Application.html" title="next page">12 A Simple CRUD Application</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Manasij Venkatesh<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
