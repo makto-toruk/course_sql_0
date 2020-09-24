@@ -1,0 +1,9 @@
+.vscode/
+.ipynb_checkpoints/
+
+# exercise files
+Ex_Files_SQL_EssT/
+
+# jupyter book
+*.yml
+_build/
