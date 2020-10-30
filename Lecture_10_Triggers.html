@@ -110,11 +110,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Lecture_08_Aggregates.html#distinct-aggregates">
-   8.3 DISTINCT Aggregates
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Lecture_09_Transactions.html">
    9 Transactions
   </a>
@@ -293,9 +288,9 @@ If you want to manipulate a table whenever another table is updated, use a trigg
 <span class="p">;</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- NEW keyword refers to a virtual row
-</pre></div>
-</div>
+<ul class="simple">
+<li><p>NEW keyword refers to a virtual row</p></li>
+</ul>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1995</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1495</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2995</span><span class="p">);</span>

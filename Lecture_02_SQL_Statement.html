@@ -110,11 +110,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Lecture_08_Aggregates.html#distinct-aggregates">
-   8.3 DISTINCT Aggregates
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Lecture_09_Transactions.html">
    9 Transactions
   </a>
@@ -316,27 +311,29 @@ These parts together constitute a statement.</p></li>
 </ul>
 </li>
 <li><p>CRUD: 4 fundamental database system functions. Create Read Update Delete.</p></li>
+</ul>
+<ol class="simple">
 <li><p>SELECT: all queries that return values. (R in CRUD)</p></li>
 <li><p>INSERT: add a row to a table (C in CRUD).</p>
-<ul>
+<ul class="simple">
 <li><p>example:</p></li>
 </ul>
 </li>
-</ul>
+</ol>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">Customer</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="k">state</span><span class="p">)</span>
     <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Jimi Hendrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Renton&#39;</span><span class="p">,</span> <span class="s1">&#39;WA&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Broken into two lines to improve readability.
-</pre></div>
-</div>
 <ul class="simple">
+<li><p>Broken into two lines to improve readability.</p></li>
+</ul>
+<ol class="simple">
 <li><p>UPDATE: to change data (U in CRUD)</p>
-<ul>
+<ul class="simple">
 <li><p>example:</p></li>
 </ul>
 </li>
-</ul>
+</ol>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="n">customer</span> 
 <span class="k">SET</span> 
     <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;123 Music Avenue&#39;</span><span class="p">,</span> 
@@ -344,13 +341,13 @@ These parts together constitute a statement.</p></li>
 <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 </pre></div>
 </div>
-<ul class="simple">
+<ol class="simple">
 <li><p>DELETE: remove rows in a table (D in CRUD).</p>
-<ul>
+<ul class="simple">
 <li><p>example: <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">FROM</span> <span class="pre">Customer</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">4;</span></code></p></li>
 </ul>
 </li>
-</ul>
+</ol>
 </div>
 <div class="section" id="database-organization">
 <h2>2.2 Database Organization<a class="headerlink" href="#database-organization" title="Permalink to this headline">¶</a></h2>

@@ -110,11 +110,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Lecture_08_Aggregates.html#distinct-aggregates">
-   8.3 DISTINCT Aggregates
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Lecture_09_Transactions.html">
    9 Transactions
   </a>
@@ -259,6 +254,11 @@
    11.3 Creating a view
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joined-view">
+   11.4 Joined view
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -359,27 +359,28 @@
 <ul class="simple">
 <li><p>A view can be saved in the database instead of creating a new table.</p></li>
 </ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>CREATE VIEW trackView AS
-  SELECT id, album_id, title, track_number, 
-    duration / 60 AS m, duration % 60 AS s FROM track;
-    ```
-
-- When you&#39;re done, drop the view as: `DROP VIEW IF EXISTS trackView;`
-
-## 11.4 Joined view
--- album.db
-
-```sql
-SELECT a.artist AS artist,
-    a.title AS album,
-    t.title AS track,
-    t.track_number AS trackno,
-    t.duration / 60 AS m,
-    t.duration % 60 AS s
-  FROM track AS t
-    JOIN album AS a
-      ON a.id = t.album_id
-;
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">trackView</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">album_id</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">track_number</span><span class="p">,</span> 
+    <span class="n">duration</span> <span class="o">/</span> <span class="mi">60</span> <span class="k">AS</span> <span class="n">m</span><span class="p">,</span> <span class="n">duration</span> <span class="o">%</span> <span class="mi">60</span> <span class="k">AS</span> <span class="n">s</span> <span class="k">FROM</span> <span class="n">track</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>When you’re done, drop the view as: <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">VIEW</span> <span class="pre">IF</span> <span class="pre">EXISTS</span> <span class="pre">trackView;</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="joined-view">
+<h2>11.4 Joined view<a class="headerlink" href="#joined-view" title="Permalink to this headline">¶</a></h2>
+<p>– album.db</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">artist</span> <span class="k">AS</span> <span class="n">artist</span><span class="p">,</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">album</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">track</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">track_number</span> <span class="k">AS</span> <span class="n">trackno</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">duration</span> <span class="o">/</span> <span class="mi">60</span> <span class="k">AS</span> <span class="n">m</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">duration</span> <span class="o">%</span> <span class="mi">60</span> <span class="k">AS</span> <span class="n">s</span>
+  <span class="k">FROM</span> <span class="n">track</span> <span class="k">AS</span> <span class="n">t</span>
+    <span class="k">JOIN</span> <span class="n">album</span> <span class="k">AS</span> <span class="n">a</span>
+      <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">album_id</span>
+<span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">

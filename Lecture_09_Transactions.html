@@ -109,11 +109,6 @@
    8 Aggregates
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Lecture_08_Aggregates.html#distinct-aggregates">
-   8.3 DISTINCT Aggregates
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    9 Transactions
@@ -301,24 +296,23 @@
 <span class="p">);</span>
 </pre></div>
 </div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetInventory</span> <span class="p">(</span> <span class="n">description</span><span class="p">,</span> <span class="n">onhand</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;rock&#39;</span><span class="p">,</span> <span class="mi">25</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetInventory</span> <span class="p">(</span> <span class="n">description</span><span class="p">,</span> <span class="n">onhand</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;paper&#39;</span><span class="p">,</span> <span class="mi">25</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetInventory</span> <span class="p">(</span> <span class="n">description</span><span class="p">,</span> <span class="n">onhand</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;scissors&#39;</span><span class="p">,</span> <span class="mi">25</span> <span class="p">);</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p>`INSERT INTO widgetInventory ( description, onhand ) VALUES ( ‘rock’, 25 );</p></li>
-<li><p>`INSERT INTO widgetInventory ( description, onhand ) VALUES ( ‘paper’, 25 );</p></li>
-<li><p>`INSERT INTO widgetInventory ( description, onhand ) VALUES ( ‘scissors’, 25 );</p></li>
+<li><p>Suppose you have the above two tables. Suppose we sell something from inventory, both the Sales and Inventory table need to be updated. It doesn’t make sense to update only one.</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-- Suppose you have the above two tables. Suppose we sell something from inventory, both the Sales and Inventory table need to be updated. It doesn&#39;t make sense to update only one.
-
-```sql
-BEGIN TRANSACTION;
-INSERT INTO widgetSales ( inv_id, quan, price ) VALUES ( 1, 5, 500 );
-UPDATE widgetInventory SET onhand = ( onhand - 5 ) WHERE id = 1;
-END TRANSACTION;
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">BEGIN</span> <span class="n">TRANSACTION</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSales</span> <span class="p">(</span> <span class="n">inv_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">500</span> <span class="p">);</span>
+<span class="k">UPDATE</span> <span class="n">widgetInventory</span> <span class="k">SET</span> <span class="n">onhand</span> <span class="o">=</span> <span class="p">(</span> <span class="n">onhand</span> <span class="o">-</span> <span class="mi">5</span> <span class="p">)</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">END</span> <span class="n">TRANSACTION</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- ensures both are performed.
-</pre></div>
-</div>
+<ul class="simple">
+<li><p>ensures both are performed.</p></li>
+</ul>
 </div>
 <div class="section" id="performance">
 <h2>9.3 performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
