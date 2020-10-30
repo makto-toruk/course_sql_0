@@ -456,11 +456,16 @@ to add one or many rows!</p>
 <hr class="docutils" />
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span> <span class="pre">IF</span> <span class="pre">EXISTS</span> <span class="pre">test;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">test</span> <span class="pre">(</span> <span class="pre">a</span> <span class="pre">INTEGER</span> <span class="pre">NOT</span> <span class="pre">NULL,</span> <span class="pre">b</span> <span class="pre">TEXT</span> <span class="pre">NOT</span> <span class="pre">NULL,</span> <span class="pre">c</span> <span class="pre">TEXT</span> <span class="pre">);</span></code></p>
-<ul>
 <li><p>create new table with a NOT NULL constraint</p></li>
 </ul>
-</li>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">test</span> <span class="p">(</span>
+    <span class="n">a</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">b</span> <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">c</span> <span class="nb">TEXT</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">1,</span> <span class="pre">'this',</span> <span class="pre">'that'</span> <span class="pre">);</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">test;</span></code>
 <br><br></p></li>
@@ -518,16 +523,16 @@ Replace first statement with</p></li>
 <ul class="simple">
 <li><p>Sometimes you need to change the database schema after it has been defined.
 – test.db</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">test</span> <span class="pre">(</span> <span class="pre">a</span> <span class="pre">TEXT,</span> <span class="pre">b</span> <span class="pre">TEXT,</span> <span class="pre">c</span> <span class="pre">TEXT</span> <span class="pre">);</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'one',</span> <span class="pre">'two',</span> <span class="pre">'three');</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'two',</span> <span class="pre">'three',</span> <span class="pre">'four');</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'three',</span> <span class="pre">'four',</span> <span class="pre">'five');</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">test;</span></code></p>
-<ul>
-<li><p>prelim table
-<br><br></p></li>
 </ul>
-</li>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">test</span> <span class="p">(</span> <span class="n">a</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">b</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="k">c</span> <span class="nb">TEXT</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">);</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">test</span><span class="p">;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<ul class="simple">
 <li><p>Suppose you want to add a column:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">test</span> <span class="pre">ADD</span> <span class="pre">d</span> <span class="pre">TEXT;</span></code></p></li>
@@ -547,13 +552,19 @@ Replace first statement with</p></li>
 <li><p>Typically ID columns are automatically populated. This column hold a unique value for each row in a table.</p></li>
 <li><p>How you create it depends on the database system. These instructions are sepcific to SQLite.
 – test.db</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">test</span> <span class="pre">(</span> <span class="pre">id</span> <span class="pre">INTEGER</span> <span class="pre">PRIMARY</span> <span class="pre">KEY,</span> <span class="pre">a</span> <span class="pre">INTEGER,</span> <span class="pre">b</span> <span class="pre">TEXT</span> <span class="pre">);</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">(a,</span> <span class="pre">b)</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">10,</span> <span class="pre">'a'</span> <span class="pre">);</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">(a,</span> <span class="pre">b)</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">11,</span> <span class="pre">'b'</span> <span class="pre">);</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">(a,</span> <span class="pre">b)</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">12,</span> <span class="pre">'c'</span> <span class="pre">);</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">test;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span> <span class="pre">IF</span> <span class="pre">EXISTS</span> <span class="pre">test;</span></code></p></li>
 </ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">test</span> <span class="p">(</span>
+  <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+  <span class="n">a</span> <span class="nb">INTEGER</span><span class="p">,</span>
+  <span class="n">b</span> <span class="nb">TEXT</span>
+<span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">);</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">test</span><span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">test</span><span class="p">;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="where-like-and-in">
 <h2>3.9 WHERE, LIKE, and IN<a class="headerlink" href="#where-like-and-in" title="Permalink to this headline">¶</a></h2>
@@ -612,9 +623,23 @@ Replace first statement with</p></li>
 </ul>
 </li>
 </ul>
-<p>– test.db</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- test.db</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">test</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">test</span> <span class="p">(</span> <span class="n">a</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span> <span class="nb">int</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">);</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">test</span><span class="p">;</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span> <span class="pre">IF</span> <span class="pre">EXISTS</span> <span class="pre">test;</span> <span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">test</span> <span class="pre">(</span> <span class="pre">a</span> <span class="pre">int,</span> <span class="pre">b</span> <span class="pre">int</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">1,</span> <span class="pre">1</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">2,</span> <span class="pre">1</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">3,</span> <span class="pre">1</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">4,</span> <span class="pre">1</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">5,</span> <span class="pre">1</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">1,</span> <span class="pre">2</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">1,</span> <span class="pre">2</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">1,</span> <span class="pre">2</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">1,</span> <span class="pre">2</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">1,</span> <span class="pre">2</span> <span class="pre">);</span> <span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">test;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">DISTINCT</span> <span class="pre">a</span> <span class="pre">FROM</span> <span class="pre">test;</span></code></p>
 <ul>
 <li><p>shows only rows with distinct values in column <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
@@ -668,13 +693,30 @@ Replace first statement with</p></li>
 <h2>3.12 CASE<a class="headerlink" href="#case" title="Permalink to this headline">¶</a></h2>
 <p>Use when you need conditional expressions
 – test.db</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">booltest</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">booltest</span> <span class="p">(</span><span class="n">a</span> <span class="nb">INTEGER</span><span class="p">,</span> <span class="n">b</span> <span class="nb">INTEGER</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">booltest</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">booltest</span><span class="p">;</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span> <span class="pre">IF</span> <span class="pre">EXISTS</span> <span class="pre">booltest;</span> <span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">booltest</span> <span class="pre">(a</span> <span class="pre">INTEGER,</span> <span class="pre">b</span> <span class="pre">INTEGER);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">booltest</span> <span class="pre">VALUES</span> <span class="pre">(1,</span> <span class="pre">0);</span> <span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">booltest;</span></code></p></li>
 <li><p>0 is considered false, anything else is considered true.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span>&#160;&#160; <span class="pre">CASE</span> <span class="pre">WHEN</span> <span class="pre">a</span> <span class="pre">THEN</span> <span class="pre">'true'</span> <span class="pre">ELSE</span> <span class="pre">'false'</span> <span class="pre">END</span> <span class="pre">as</span> <span class="pre">boolA,</span>&#160;&#160; <span class="pre">CASE</span> <span class="pre">WHEN</span> <span class="pre">b</span> <span class="pre">THEN</span> <span class="pre">'true'</span> <span class="pre">ELSE</span> <span class="pre">'false'</span> <span class="pre">END</span> <span class="pre">as</span> <span class="pre">boolB</span>&#160;&#160; <span class="pre">FROM</span> <span class="pre">booltest</span> <span class="pre">;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">CASE</span> <span class="pre">a</span> <span class="pre">WHEN</span> <span class="pre">1</span> <span class="pre">THEN</span> <span class="pre">'true'</span> <span class="pre">ELSE</span> <span class="pre">'false'</span> <span class="pre">END</span> <span class="pre">AS</span> <span class="pre">boolA,</span> <span class="pre">CASE</span> <span class="pre">b</span> <span class="pre">WHEN</span> <span class="pre">1</span> <span class="pre">THEN</span> <span class="pre">'true'</span> <span class="pre">ELSE</span> <span class="pre">'false'</span> <span class="pre">END</span> <span class="pre">AS</span> <span class="pre">boolB</span>&#160; <span class="pre">FROM</span> <span class="pre">booltest</span> <span class="pre">;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span> <span class="pre">IF</span> <span class="pre">EXISTS</span> <span class="pre">booltest;</span></code></p></li>
 </ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+    <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">a</span> <span class="k">THEN</span> <span class="s1">&#39;true&#39;</span> <span class="k">ELSE</span> <span class="s1">&#39;false&#39;</span> <span class="k">END</span> <span class="k">as</span> <span class="n">boolA</span><span class="p">,</span>
+    <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">b</span> <span class="k">THEN</span> <span class="s1">&#39;true&#39;</span> <span class="k">ELSE</span> <span class="s1">&#39;false&#39;</span> <span class="k">END</span> <span class="k">as</span> <span class="n">boolB</span>
+    <span class="k">FROM</span> <span class="n">booltest</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
+    <span class="k">CASE</span> <span class="n">a</span> <span class="k">WHEN</span> <span class="mi">1</span> <span class="k">THEN</span> <span class="s1">&#39;true&#39;</span> <span class="k">ELSE</span> <span class="s1">&#39;false&#39;</span> <span class="k">END</span> <span class="k">AS</span> <span class="n">boolA</span><span class="p">,</span>
+    <span class="k">CASE</span> <span class="n">b</span> <span class="k">WHEN</span> <span class="mi">1</span> <span class="k">THEN</span> <span class="s1">&#39;true&#39;</span> <span class="k">ELSE</span> <span class="s1">&#39;false&#39;</span> <span class="k">END</span> <span class="k">AS</span> <span class="n">boolB</span> 
+    <span class="k">FROM</span> <span class="n">booltest</span>
+<span class="p">;</span>
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">booltest</span><span class="p">;</span>
+</pre></div>
+</div>
 </div>
 </div>
 

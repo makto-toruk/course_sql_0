@@ -259,11 +259,6 @@
    11.3 Creating a view
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#joined-view">
-   11.4 Joined view
-  </a>
- </li>
 </ul>
 
         </nav>
@@ -278,70 +273,143 @@
 <h1>11 Views and Subselects<a class="headerlink" href="#views-and-subselects" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="simple-subselect">
 <h2>11.1 Simple Subselect<a class="headerlink" href="#simple-subselect" title="Permalink to this headline">¶</a></h2>
-<p>– world.db</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- world.db</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">t</span> <span class="p">(</span> <span class="n">a</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">b</span> <span class="nb">TEXT</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">t</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;NY0123&#39;</span><span class="p">,</span> <span class="s1">&#39;US4567&#39;</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">t</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;AZ9437&#39;</span><span class="p">,</span> <span class="s1">&#39;GB1234&#39;</span> <span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">t</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;CA1279&#39;</span><span class="p">,</span> <span class="s1">&#39;FR5678&#39;</span> <span class="p">);</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">t</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">SUBSTR</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">State</span><span class="p">,</span> <span class="n">SUBSTR</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">AS</span> <span class="n">SCode</span><span class="p">,</span> 
+<span class="n">SUBSTR</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">Country</span><span class="p">,</span> <span class="n">SUBSTR</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">AS</span> <span class="n">CCode</span> <span class="k">FROM</span> <span class="n">t</span><span class="p">;</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">t</span> <span class="pre">(</span> <span class="pre">a</span> <span class="pre">TEXT,</span> <span class="pre">b</span> <span class="pre">TEXT</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">t</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'NY0123',</span> <span class="pre">'US4567'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">t</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'AZ9437',</span> <span class="pre">'GB1234'</span> <span class="pre">);</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">t</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'CA1279',</span> <span class="pre">'FR5678'</span> <span class="pre">);</span> <span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">t;</span></code></p></li>
+<li><p>This is a straight statement. It uses substrings to list table information in more columns</p></li>
+<li><p>Here’s the interesting part. We can use the above as a datasource to SELECT from, making it a SUBSELECT. Example:</p></li>
 </ul>
-<p>-<code class="docutils literal notranslate"> <span class="pre">SELECT</span> <span class="pre">SUBSTR(a,</span> <span class="pre">1,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">State,</span> <span class="pre">SUBSTR(a,</span> <span class="pre">3)</span> <span class="pre">AS</span> <span class="pre">SCode,</span>&#160; <span class="pre">SUBSTR(b,</span> <span class="pre">1,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">Country,</span> <span class="pre">SUBSTR(b,</span> <span class="pre">3)</span> <span class="pre">AS</span> <span class="pre">CCode</span> <span class="pre">FROM</span> <span class="pre">t;</span></code>
-- This is a straight statement. It uses substrings to list table information in more columns</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">co</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">ss</span><span class="p">.</span><span class="n">CCode</span> <span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="n">SUBSTR</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">State</span><span class="p">,</span> <span class="n">SUBSTR</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">AS</span> <span class="n">SCode</span><span class="p">,</span>
+      <span class="n">SUBSTR</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">Country</span><span class="p">,</span> <span class="n">SUBSTR</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">AS</span> <span class="n">CCode</span> <span class="k">FROM</span> <span class="n">t</span>
+  <span class="p">)</span> <span class="k">AS</span> <span class="n">ss</span>
+  <span class="k">JOIN</span> <span class="n">Country</span> <span class="k">AS</span> <span class="n">co</span>
+    <span class="k">ON</span> <span class="n">co</span><span class="p">.</span><span class="n">Code2</span> <span class="o">=</span> <span class="n">ss</span><span class="p">.</span><span class="n">Country</span>
+<span class="p">;</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p>Here’s the interesting part. We can use the above as a datasource to SELECT from, making it a SUBSELECT. Example:
--<code class="docutils literal notranslate"> <span class="pre">SELECT</span> <span class="pre">co.Name,</span> <span class="pre">ss.CCode</span> <span class="pre">FROM</span> <span class="pre">(</span>&#160;&#160; <span class="pre">SELECT</span> <span class="pre">SUBSTR(a,</span> <span class="pre">1,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">State,</span> <span class="pre">SUBSTR(a,</span> <span class="pre">3)</span> <span class="pre">AS</span> <span class="pre">SCode,</span>&#160;&#160;&#160;&#160; <span class="pre">SUBSTR(b,</span> <span class="pre">1,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">Country,</span> <span class="pre">SUBSTR(b,</span> <span class="pre">3)</span> <span class="pre">AS</span> <span class="pre">CCode</span> <span class="pre">FROM</span> <span class="pre">t</span> <span class="pre">)</span> <span class="pre">AS</span> <span class="pre">ss</span> <span class="pre">JOIN</span> <span class="pre">Country</span> <span class="pre">AS</span> <span class="pre">co</span>&#160;&#160; <span class="pre">ON</span> <span class="pre">co.Code2</span> <span class="pre">=</span> <span class="pre">ss.Country</span> <span class="pre">;</span></code></p></li>
 <li><p>This seems like it could be really useful for my work.</p></li>
 </ul>
 </div>
 <div class="section" id="searching-within-a-result-set">
 <h2>11.2 searching within a result set<a class="headerlink" href="#searching-within-a-result-set" title="Permalink to this headline">¶</a></h2>
 <p>– album.db</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">album_id</span> <span class="k">FROM</span> <span class="n">track</span> <span class="k">WHERE</span> <span class="n">duration</span> <span class="o">&lt;=</span> <span class="mi">90</span><span class="p">;</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">DISTINCT</span> <span class="pre">album_id</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">WHERE</span> <span class="pre">duration</span> <span class="pre">&lt;=</span> <span class="pre">90;</span></code></p>
-<ul>
 <li><p>returns album IDs. But what albums are they?</p></li>
 </ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">album</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">IN</span> <span class="pre">(SELECT</span> <span class="pre">DISTINCT</span> <span class="pre">album_id</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">WHERE</span> <span class="pre">duration</span> <span class="pre">&lt;=</span> <span class="pre">90)</span> <span class="pre">;</span></code></p></li>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">album</span>
+  <span class="k">WHERE</span> <span class="n">id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">album_id</span> <span class="k">FROM</span> <span class="n">track</span> <span class="k">WHERE</span> <span class="n">duration</span> <span class="o">&lt;=</span> <span class="mi">90</span><span class="p">)</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>To get more details about all the the tracks in these albums:</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">album,</span> <span class="pre">a.artist,</span> <span class="pre">t.track_number</span> <span class="pre">AS</span> <span class="pre">seq,</span> <span class="pre">t.title,</span> <span class="pre">t.duration</span> <span class="pre">AS</span> <span class="pre">secs</span> <span class="pre">FROM</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span> <span class="pre">JOIN</span> <span class="pre">track</span> <span class="pre">AS</span> <span class="pre">t</span>&#160;&#160; <span class="pre">ON</span> <span class="pre">t.album_id</span> <span class="pre">=</span> <span class="pre">a.id</span> <span class="pre">WHERE</span> <span class="pre">a.id</span> <span class="pre">IN</span> <span class="pre">(SELECT</span> <span class="pre">DISTINCT</span> <span class="pre">album_id</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">WHERE</span> <span class="pre">duration</span> <span class="pre">&lt;=</span> <span class="pre">90)</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">a.title,</span> <span class="pre">t.track_number</span> <span class="pre">;</span></code></p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">album</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">artist</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">track_number</span> <span class="k">AS</span> <span class="n">seq</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">duration</span> <span class="k">AS</span> <span class="n">secs</span>
+  <span class="k">FROM</span> <span class="n">album</span> <span class="k">AS</span> <span class="n">a</span>
+  <span class="k">JOIN</span> <span class="n">track</span> <span class="k">AS</span> <span class="n">t</span>
+    <span class="k">ON</span> <span class="n">t</span><span class="p">.</span><span class="n">album_id</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+  <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">album_id</span> <span class="k">FROM</span> <span class="n">track</span> <span class="k">WHERE</span> <span class="n">duration</span> <span class="o">&lt;=</span> <span class="mi">90</span><span class="p">)</span>
+  <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">track_number</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>What if we want only those two tracks?</p>
 <ul>
-<li><p>JOIN on the subselect
--<code class="docutils literal notranslate"> <span class="pre">SELECT</span> <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">album,</span> <span class="pre">a.artist,</span> <span class="pre">t.track_number</span> <span class="pre">AS</span> <span class="pre">seq,</span> <span class="pre">t.title,</span> <span class="pre">t.duration</span> <span class="pre">AS</span> <span class="pre">secs</span> <span class="pre">FROM</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span> <span class="pre">JOIN</span> <span class="pre">(</span> <span class="pre">SELECT</span> <span class="pre">DISTINCT</span> <span class="pre">album_id,</span> <span class="pre">track_number,</span> <span class="pre">duration,</span> <span class="pre">title</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">WHERE</span> <span class="pre">duration</span> <span class="pre">&lt;=</span> <span class="pre">90</span> <span class="pre">)</span> <span class="pre">AS</span> <span class="pre">t</span> <span class="pre">ON</span> <span class="pre">t.album_id</span> <span class="pre">=</span> <span class="pre">a.id</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">a.title,</span> <span class="pre">t.track_number</span> <span class="pre">;</span></code></p></li>
+<li><p>JOIN on the subselect</p></li>
 </ul>
 </li>
 </ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">album</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">artist</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">track_number</span> <span class="k">AS</span> <span class="n">seq</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">duration</span> <span class="k">AS</span> <span class="n">secs</span>
+  <span class="k">FROM</span> <span class="n">album</span> <span class="k">AS</span> <span class="n">a</span>
+  <span class="k">JOIN</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">album_id</span><span class="p">,</span> <span class="n">track_number</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">title</span>
+      <span class="k">FROM</span> <span class="n">track</span>
+      <span class="k">WHERE</span> <span class="n">duration</span> <span class="o">&lt;=</span> <span class="mi">90</span>
+  <span class="p">)</span> <span class="k">AS</span> <span class="n">t</span>
+    <span class="k">ON</span> <span class="n">t</span><span class="p">.</span><span class="n">album_id</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+  <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="n">track_number</span>
+<span class="p">;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="creating-a-view">
 <h2>11.3 Creating a view<a class="headerlink" href="#creating-a-view" title="Permalink to this headline">¶</a></h2>
 <p>– album.db</p>
 <p>A view is effectively a saved table.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">album_id,</span> <span class="pre">title,</span> <span class="pre">track_number,</span>&#160; <span class="pre">duration</span> <span class="pre">/</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">m,</span> <span class="pre">duration</span> <span class="pre">%</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">s</span> <span class="pre">FROM</span> <span class="pre">track;</span></code></p></li>
-<li><p>A view can be saved in the database instead of creating a new table.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">VIEW</span> <span class="pre">trackView</span> <span class="pre">AS</span> <span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">album_id,</span> <span class="pre">title,</span> <span class="pre">track_number,</span>&#160;&#160;&#160; <span class="pre">duration</span> <span class="pre">/</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">m,</span> <span class="pre">duration</span> <span class="pre">%</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">s</span> <span class="pre">FROM</span> <span class="pre">track;</span></code></p></li>
-<li><p>When you’re done, drop the view as: <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">VIEW</span> <span class="pre">IF</span> <span class="pre">EXISTS</span> <span class="pre">trackView;</span></code></p></li>
-</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">album_id</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">track_number</span><span class="p">,</span> 
+  <span class="n">duration</span> <span class="o">/</span> <span class="mi">60</span> <span class="k">AS</span> <span class="n">m</span><span class="p">,</span> <span class="n">duration</span> <span class="o">%</span> <span class="mi">60</span> <span class="k">AS</span> <span class="n">s</span> <span class="k">FROM</span> <span class="n">track</span><span class="p">;</span>
+</pre></div>
 </div>
-<div class="section" id="joined-view">
-<h2>11.4 Joined view<a class="headerlink" href="#joined-view" title="Permalink to this headline">¶</a></h2>
-<p>– album.db</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">a.artist</span> <span class="pre">AS</span> <span class="pre">artist,</span>&#160;&#160; <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">album,</span>&#160;&#160; <span class="pre">t.title</span> <span class="pre">AS</span> <span class="pre">track,</span>&#160;&#160; <span class="pre">t.track_number</span> <span class="pre">AS</span> <span class="pre">trackno,</span>&#160;&#160; <span class="pre">t.duration</span> <span class="pre">/</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">m,</span>&#160;&#160; <span class="pre">t.duration</span> <span class="pre">%</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">s</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">AS</span> <span class="pre">t</span>&#160;&#160; <span class="pre">JOIN</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span>&#160;&#160;&#160;&#160; <span class="pre">ON</span> <span class="pre">a.id</span> <span class="pre">=</span> <span class="pre">t.album_id</span> <span class="pre">;</span></code></p>
-<ul>
+<li><p>A view can be saved in the database instead of creating a new table.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>CREATE VIEW trackView AS
+  SELECT id, album_id, title, track_number, 
+    duration / 60 AS m, duration % 60 AS s FROM track;
+    ```
+
+- When you&#39;re done, drop the view as: `DROP VIEW IF EXISTS trackView;`
+
+## 11.4 Joined view
+-- album.db
+
+```sql
+SELECT a.artist AS artist,
+    a.title AS album,
+    t.title AS track,
+    t.track_number AS trackno,
+    t.duration / 60 AS m,
+    t.duration % 60 AS s
+  FROM track AS t
+    JOIN album AS a
+      ON a.id = t.album_id
+;
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>Select always returns a table</p></li>
 </ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">VIEW</span> <span class="pre">joinedAlbum</span> <span class="pre">AS</span> <span class="pre">SELECT</span> <span class="pre">a.artist</span> <span class="pre">AS</span> <span class="pre">artist,</span>&#160;&#160;&#160;&#160; <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">album,</span>&#160;&#160;&#160;&#160; <span class="pre">t.title</span> <span class="pre">AS</span> <span class="pre">track,</span>&#160;&#160;&#160;&#160; <span class="pre">t.track_number</span> <span class="pre">AS</span> <span class="pre">trackno,</span>&#160;&#160;&#160;&#160; <span class="pre">t.duration</span> <span class="pre">/</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">m,</span>&#160;&#160;&#160;&#160; <span class="pre">t.duration</span> <span class="pre">%</span> <span class="pre">60</span> <span class="pre">AS</span> <span class="pre">s</span>&#160;&#160; <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">AS</span> <span class="pre">t</span>&#160;&#160; <span class="pre">JOIN</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span>&#160;&#160;&#160;&#160; <span class="pre">ON</span> <span class="pre">a.id</span> <span class="pre">=</span> <span class="pre">t.album_id</span> <span class="pre">;</span></code></p>
-<ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">joinedAlbum</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">artist</span> <span class="k">AS</span> <span class="n">artist</span><span class="p">,</span>
+      <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">album</span><span class="p">,</span>
+      <span class="n">t</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">track</span><span class="p">,</span>
+      <span class="n">t</span><span class="p">.</span><span class="n">track_number</span> <span class="k">AS</span> <span class="n">trackno</span><span class="p">,</span>
+      <span class="n">t</span><span class="p">.</span><span class="n">duration</span> <span class="o">/</span> <span class="mi">60</span> <span class="k">AS</span> <span class="n">m</span><span class="p">,</span>
+      <span class="n">t</span><span class="p">.</span><span class="n">duration</span> <span class="o">%</span> <span class="mi">60</span> <span class="k">AS</span> <span class="n">s</span>
+    <span class="k">FROM</span> <span class="n">track</span> <span class="k">AS</span> <span class="n">t</span>
+    <span class="k">JOIN</span> <span class="n">album</span> <span class="k">AS</span> <span class="n">a</span>
+      <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">album_id</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>That table can be saved as a view.</p></li>
 </ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">artist,</span> <span class="pre">album,</span> <span class="pre">track,</span> <span class="pre">trackno,</span>&#160;&#160; <span class="pre">m</span> <span class="pre">||</span> <span class="pre">':'</span> <span class="pre">||</span> <span class="pre">substr('00'</span> <span class="pre">||</span> <span class="pre">s,</span> <span class="pre">-2,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">duration</span>&#160;&#160; <span class="pre">FROM</span> <span class="pre">joinedAlbum;</span></code></p>
-<ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">artist</span><span class="p">,</span> <span class="n">album</span><span class="p">,</span> <span class="n">track</span><span class="p">,</span> <span class="n">trackno</span><span class="p">,</span> 
+   <span class="n">m</span> <span class="o">||</span> <span class="s1">&#39;:&#39;</span> <span class="o">||</span> <span class="n">substr</span><span class="p">(</span><span class="s1">&#39;00&#39;</span> <span class="o">||</span> <span class="n">s</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">duration</span>
+    <span class="k">FROM</span> <span class="n">joinedAlbum</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>and then a complex query can be run on that view.</p></li>
 <li><p>recall <code class="docutils literal notranslate"><span class="pre">||</span></code> is concatenation in SQLite</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">00</span></code> is just a trick to convert into format mm:ss</p></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>

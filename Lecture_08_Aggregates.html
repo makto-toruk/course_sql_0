@@ -275,26 +275,55 @@
 <li><p>COUNT is an aggregate function</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Region,</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">Region</span> <span class="pre">;</span></code></p>
-<ul>
-<li><p>GROUP BY groups the results before calling COUNT</p></li>
 </ul>
-</li>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Region</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+  <span class="k">FROM</span> <span class="n">Country</span>
+  <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">Region</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>GROUP BY groups the results before calling COUNT</p></li>
 </ul>
 <p>– album.db</p>
 <ul class="simple">
 <li><p>This also works with join queries</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">Album,</span> <span class="pre">COUNT(t.track_number)</span> <span class="pre">as</span> <span class="pre">Tracks</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">AS</span> <span class="pre">t</span> <span class="pre">JOIN</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span>&#160;&#160; <span class="pre">ON</span> <span class="pre">a.id</span> <span class="pre">=</span> <span class="pre">t.album_id</span> <span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">a.id</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Tracks</span> <span class="pre">DESC,</span> <span class="pre">Album</span> <span class="pre">;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">Album,</span> <span class="pre">COUNT(t.track_number)</span> <span class="pre">as</span> <span class="pre">Tracks</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">AS</span> <span class="pre">t</span> <span class="pre">JOIN</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span>&#160;&#160; <span class="pre">ON</span> <span class="pre">a.id</span> <span class="pre">=</span> <span class="pre">t.album_id</span> <span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">a.id</span> <span class="pre">HAVING</span> <span class="pre">Tracks</span> <span class="pre">&gt;=</span> <span class="pre">10</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Tracks</span> <span class="pre">DESC,</span> <span class="pre">Album</span> <span class="pre">;</span></code></p>
-<ul>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">Album</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">track_number</span><span class="p">)</span> <span class="k">as</span> <span class="n">Tracks</span>
+  <span class="k">FROM</span> <span class="n">track</span> <span class="k">AS</span> <span class="n">t</span>
+  <span class="k">JOIN</span> <span class="n">album</span> <span class="k">AS</span> <span class="n">a</span>
+    <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">album_id</span>
+  <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+  <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">Tracks</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">Album</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">Album</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">track_number</span><span class="p">)</span> <span class="k">as</span> <span class="n">Tracks</span>
+  <span class="k">FROM</span> <span class="n">track</span> <span class="k">AS</span> <span class="n">t</span>
+  <span class="k">JOIN</span> <span class="n">album</span> <span class="k">AS</span> <span class="n">a</span>
+    <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">album_id</span>
+  <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+  <span class="k">HAVING</span> <span class="n">Tracks</span> <span class="o">&gt;=</span> <span class="mi">10</span>
+  <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">Tracks</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">Album</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>using a HAVING clause along with aggregation</p></li>
 </ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">a.title</span> <span class="pre">AS</span> <span class="pre">Album,</span> <span class="pre">COUNT(t.track_number)</span> <span class="pre">as</span> <span class="pre">Tracks</span> <span class="pre">FROM</span> <span class="pre">track</span> <span class="pre">AS</span> <span class="pre">t</span> <span class="pre">JOIN</span> <span class="pre">album</span> <span class="pre">AS</span> <span class="pre">a</span>&#160;&#160; <span class="pre">ON</span> <span class="pre">a.id</span> <span class="pre">=</span> <span class="pre">t.album_id</span> <span class="pre">WHERE</span> <span class="pre">a.artist</span> <span class="pre">=</span> <span class="pre">'The</span> <span class="pre">Beatles'</span> <span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">a.id</span> <span class="pre">HAVING</span> <span class="pre">Tracks</span> <span class="pre">&gt;=</span> <span class="pre">10</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Tracks</span> <span class="pre">DESC,</span> <span class="pre">Album</span> <span class="pre">;</span></code></p>
-<ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">Album</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">track_number</span><span class="p">)</span> <span class="k">as</span> <span class="n">Tracks</span>
+  <span class="k">FROM</span> <span class="n">track</span> <span class="k">AS</span> <span class="n">t</span>
+  <span class="k">JOIN</span> <span class="n">album</span> <span class="k">AS</span> <span class="n">a</span>
+    <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">album_id</span>
+  <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">artist</span> <span class="o">=</span> <span class="s1">&#39;The Beatles&#39;</span>
+  <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+  <span class="k">HAVING</span> <span class="n">Tracks</span> <span class="o">&gt;=</span> <span class="mi">10</span>
+  <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">Tracks</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">Album</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>a WHERE clause can also be used</p></li>
-</ul>
-</li>
 <li><p>WHERE clause must be before GROUP BY because WHERE acts before aggregation</p></li>
 <li><p>HAVING after GROUP BY since it acts on aggregate data</p></li>
 <li><p>HAVING: aggregate data</p></li>

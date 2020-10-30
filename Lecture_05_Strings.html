@@ -334,12 +334,19 @@
 <li><p>third argument is number of characters to return</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">released,</span>&#160;&#160; <span class="pre">SUBSTR(released,</span> <span class="pre">1,</span> <span class="pre">4)</span> <span class="pre">AS</span> <span class="pre">year,</span>&#160;&#160; <span class="pre">SUBSTR(released,</span> <span class="pre">6,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">month,</span>&#160;&#160; <span class="pre">SUBSTR(released,</span> <span class="pre">9,</span> <span class="pre">2)</span> <span class="pre">AS</span> <span class="pre">day</span> <span class="pre">FROM</span> <span class="pre">album</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">released</span> <span class="pre">;</span></code></p>
-<ul>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">released</span><span class="p">,</span>
+    <span class="n">SUBSTR</span><span class="p">(</span><span class="n">released</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="k">AS</span> <span class="k">year</span><span class="p">,</span>
+    <span class="n">SUBSTR</span><span class="p">(</span><span class="n">released</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">month</span><span class="p">,</span>
+    <span class="n">SUBSTR</span><span class="p">(</span><span class="n">released</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">day</span>
+  <span class="k">FROM</span> <span class="n">album</span>
+  <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">released</span>
+<span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>notice that you can order by released (or date)</p></li>
 <li><p>SQL standard doesn’t include a SUBSTR but most major systems have this feature (name and usage may differ)</p></li>
-</ul>
-</li>
 </ul>
 </div>
 <div class="section" id="trim">

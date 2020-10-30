@@ -319,15 +319,32 @@ These parts together constitute a statement.</p></li>
 <li><p>SELECT: all queries that return values. (R in CRUD)</p></li>
 <li><p>INSERT: add a row to a table (C in CRUD).</p>
 <ul>
-<li><p>example: <code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">Customer</span> <span class="pre">(name,</span> <span class="pre">city,</span> <span class="pre">state)</span> <span class="pre">VALUES</span> <span class="pre">('Jimi</span> <span class="pre">Hendrix',</span> <span class="pre">'Renton',</span> <span class="pre">'WA');</span></code></p></li>
-<li><p>Broken into two lines to improve readability.</p></li>
+<li><p>example:</p></li>
 </ul>
 </li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">Customer</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="k">state</span><span class="p">)</span>
+    <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Jimi Hendrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Renton&#39;</span><span class="p">,</span> <span class="s1">&#39;WA&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Broken into two lines to improve readability.
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>UPDATE: to change data (U in CRUD)</p>
 <ul>
-<li><p>example: <code class="docutils literal notranslate"><span class="pre">UPDATE</span> <span class="pre">customer</span>&#160; <span class="pre">SET</span>&#160;&#160;&#160; <span class="pre">address</span> <span class="pre">=</span> <span class="pre">'123</span> <span class="pre">Music</span> <span class="pre">Avenue',</span>&#160;&#160;&#160; <span class="pre">zip</span> <span class="pre">=</span> <span class="pre">'98056'</span>&#160; <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></li>
+<li><p>example:</p></li>
 </ul>
 </li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="n">customer</span> 
+<span class="k">SET</span> 
+    <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;123 Music Avenue&#39;</span><span class="p">,</span> 
+    <span class="n">zip</span> <span class="o">=</span> <span class="s1">&#39;98056&#39;</span> 
+<span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>DELETE: remove rows in a table (D in CRUD).</p>
 <ul>
 <li><p>example: <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">FROM</span> <span class="pre">Customer</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">4;</span></code></p></li>
@@ -438,12 +455,12 @@ where item_id and cust_id are keys of other tables.</p></li>
 <h2>2.5 Columns<a class="headerlink" href="#columns" title="Permalink to this headline">¶</a></h2>
 <p>Selecting Columns
 – world.db</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name</span> <span class="pre">AS</span> <span class="pre">Country,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name</span> <span class="pre">AS</span> <span class="pre">Country,</span> <span class="pre">Region,</span> <span class="pre">Continent</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p></li>
-</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Country</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Continent</span><span class="p">,</span> <span class="n">Region</span> <span class="k">FROM</span> <span class="n">Country</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">Name</span> <span class="k">AS</span> <span class="n">Country</span><span class="p">,</span> <span class="n">Continent</span><span class="p">,</span> <span class="n">Region</span> <span class="k">FROM</span> <span class="n">Country</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">Name</span> <span class="k">AS</span> <span class="n">Country</span><span class="p">,</span> <span class="n">Region</span><span class="p">,</span> <span class="n">Continent</span> <span class="k">FROM</span> <span class="n">Country</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>We’ve seen all these before.</p>
 </div>
 <div class="section" id="count">
@@ -485,17 +502,21 @@ where item_id and cust_id are keys of other tables.</p></li>
 – test.db</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">customer</span> <span class="pre">(name,</span> <span class="pre">address,</span> <span class="pre">city,</span> <span class="pre">state,</span> <span class="pre">zip)</span>&#160; <span class="pre">VALUES</span> <span class="pre">('Fred</span> <span class="pre">Flintstone',</span> <span class="pre">'123</span> <span class="pre">Cobblestone</span> <span class="pre">Way',</span> <span class="pre">'Bedrock',</span> <span class="pre">'CA',</span> <span class="pre">'91234');</span></code></p>
-<ul>
-<li><p>adds a new row!</p></li>
+<li><p>To add a new row:</p></li>
 </ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">customer</span> <span class="pre">(name,</span> <span class="pre">city,</span> <span class="pre">state)</span>&#160; <span class="pre">VALUES</span> <span class="pre">('Jimi</span> <span class="pre">Hendrix',</span> <span class="pre">'Renton',</span> <span class="pre">'WA');</span></code></p>
-<ul>
-<li><p>can insert a row and populate only some columns</p></li>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">customer</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="k">state</span><span class="p">,</span> <span class="n">zip</span><span class="p">)</span> 
+    <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Fred Flintstone&#39;</span><span class="p">,</span> <span class="s1">&#39;123 Cobblestone Way&#39;</span><span class="p">,</span> <span class="s1">&#39;Bedrock&#39;</span><span class="p">,</span> <span class="s1">&#39;CA&#39;</span><span class="p">,</span> <span class="s1">&#39;91234&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To populate some columns in a row:</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">customer</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="k">state</span><span class="p">)</span> 
+    <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Jimi Hendrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Renton&#39;</span><span class="p">,</span> <span class="s1">&#39;WA&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(address)</span> <span class="pre">FROM</span> <span class="pre">customer</span></code> returns 4</p></li>
-</ul>
-</li>
 <li><p>Note: can use id as a field in insert</p></li>
 <li><p>but if id exists, then SQL returns error. i.e, insert can’t overwrite</p></li>
 </ul>
@@ -504,31 +525,29 @@ where item_id and cust_id are keys of other tables.</p></li>
 <h2>2.8 UPDATE<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
 <p>Updating Data (or Changing data)
 – test.db</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">customer</span><span class="p">;</span>
+<span class="k">UPDATE</span> <span class="n">customer</span> <span class="k">SET</span> <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;123 Music Avenue&#39;</span><span class="p">,</span> <span class="n">zip</span> <span class="o">=</span> <span class="s1">&#39;98056&#39;</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="c1">-- or `UPDATE customer SET address = &#39;123 Music Avenue&#39;, zip = &#39;98056&#39; WHERE name = &#39;Jimi Hendrix&#39;;</span>
+<span class="k">UPDATE</span> <span class="n">customer</span> <span class="k">SET</span> <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;2603 S Washington St&#39;</span><span class="p">,</span> <span class="n">zip</span> <span class="o">=</span> <span class="s1">&#39;98056&#39;</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="k">UPDATE</span> <span class="n">customer</span> <span class="k">SET</span> <span class="n">address</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">,</span> <span class="n">zip</span> <span class="o">=</span> <span class="k">NULL</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span> <span class="pre">customer</span> <span class="pre">SET</span> <span class="pre">address</span> <span class="pre">=</span> <span class="pre">'123</span> <span class="pre">Music</span> <span class="pre">Avenue',</span> <span class="pre">zip</span> <span class="pre">=</span> <span class="pre">'98056'</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">5;</span></code></p>
-<ul>
-<li><p>or <code class="docutils literal notranslate"><span class="pre">UPDA</span> <span class="pre">TE</span> <span class="pre">customer</span> <span class="pre">SET</span> <span class="pre">address</span> <span class="pre">=</span> <span class="pre">'123</span> <span class="pre">Music</span> <span class="pre">Avenue',</span> <span class="pre">zip</span> <span class="pre">=</span> <span class="pre">'98056'</span> <span class="pre">WHERE</span> <span class="pre">name</span> <span class="pre">=</span> <span class="pre">'Jimi</span> <span class="pre">Hendrix';</span></code></p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span> <span class="pre">customer</span> <span class="pre">SET</span> <span class="pre">address</span> <span class="pre">=</span> <span class="pre">'2603</span> <span class="pre">S</span> <span class="pre">Washington</span> <span class="pre">St',</span> <span class="pre">zip</span> <span class="pre">=</span> <span class="pre">'98056'</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE</span> <span class="pre">customer</span> <span class="pre">SET</span> <span class="pre">address</span> <span class="pre">=</span> <span class="pre">NULL,</span> <span class="pre">zip</span> <span class="pre">=</span> <span class="pre">NULL</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">5;</span></code></p>
-<ul>
 <li><p>NULL is a special value (no data)</p></li>
-</ul>
-</li>
 </ul>
 </div>
 <div class="section" id="delete">
 <h2>2.9 DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
 <p>Deleting Data
 – test.db</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">customer</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">customer</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">customer</span><span class="p">;</span>
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">customer</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">customer</span><span class="p">;</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">4;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">FROM</span> <span class="pre">customer</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">4;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">FROM</span> <span class="pre">customer</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer;</span></code></p></li>
 <li><p>Note: if you want to delete an entry in a column, UPDATE to NULL</p></li>
 <li><p>If you want to delete an entire row, then use DELETE</p></li>
 </ul>

@@ -286,25 +286,51 @@
 <div class="section" id="id1">
 <h2>9.2 transactions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>– test.db</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetInventory</span> <span class="p">(</span>
+  <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+  <span class="n">description</span> <span class="nb">TEXT</span><span class="p">,</span>
+  <span class="n">onhand</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetSales</span> <span class="p">(</span>
+  <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+  <span class="n">inv_id</span> <span class="nb">INTEGER</span><span class="p">,</span>
+  <span class="n">quan</span> <span class="nb">INTEGER</span><span class="p">,</span>
+  <span class="n">price</span> <span class="nb">INTEGER</span>
+<span class="p">);</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">widgetInventory</span> <span class="pre">(</span> <span class="pre">id</span> <span class="pre">INTEGER</span> <span class="pre">PRIMARY</span> <span class="pre">KEY,</span> <span class="pre">description</span> <span class="pre">TEXT,</span> <span class="pre">onhand</span> <span class="pre">INTEGER</span> <span class="pre">NOT</span> <span class="pre">NULL</span> <span class="pre">);</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">widgetSales</span> <span class="pre">(</span> <span class="pre">id</span> <span class="pre">INTEGER</span> <span class="pre">PRIMARY</span> <span class="pre">KEY,</span> <span class="pre">inv_id</span> <span class="pre">INTEGER,</span> <span class="pre">quan</span> <span class="pre">INTEGER,</span> <span class="pre">price</span> <span class="pre">INTEGER</span> <span class="pre">);</span></code></p></li>
 <li><p>`INSERT INTO widgetInventory ( description, onhand ) VALUES ( ‘rock’, 25 );</p></li>
 <li><p>`INSERT INTO widgetInventory ( description, onhand ) VALUES ( ‘paper’, 25 );</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">widgetInventory</span> <span class="pre">(</span> <span class="pre">description,</span> <span class="pre">onhand</span> <span class="pre">)</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'scissors',</span> <span class="pre">25</span> <span class="pre">);</span></code></p></li>
-<li><p>Suppose you have the above two tables. Suppose we sell something from inventory, both the Sales and Inventory table need to be updated. It doesn’t make sense to update only one.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">BEGIN</span> <span class="pre">TRANSACTION;</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">widgetSales</span> <span class="pre">(</span> <span class="pre">inv_id,</span> <span class="pre">quan,</span> <span class="pre">price</span> <span class="pre">)</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">1,</span> <span class="pre">5,</span> <span class="pre">500</span> <span class="pre">);</span> <span class="pre">UPDATE</span> <span class="pre">widgetInventory</span> <span class="pre">SET</span> <span class="pre">onhand</span> <span class="pre">=</span> <span class="pre">(</span> <span class="pre">onhand</span> <span class="pre">-</span> <span class="pre">5</span> <span class="pre">)</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">1;</span> <span class="pre">END</span> <span class="pre">TRANSACTION;</span></code></p>
-<ul>
-<li><p>ensures both are performed.</p></li>
+<li><p>`INSERT INTO widgetInventory ( description, onhand ) VALUES ( ‘scissors’, 25 );</p></li>
 </ul>
-</li>
-</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+- Suppose you have the above two tables. Suppose we sell something from inventory, both the Sales and Inventory table need to be updated. It doesn&#39;t make sense to update only one.
+
+```sql
+BEGIN TRANSACTION;
+INSERT INTO widgetSales ( inv_id, quan, price ) VALUES ( 1, 5, 500 );
+UPDATE widgetInventory SET onhand = ( onhand - 5 ) WHERE id = 1;
+END TRANSACTION;
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- ensures both are performed.
+</pre></div>
+</div>
 </div>
 <div class="section" id="performance">
 <h2>9.3 performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
 <p>Example:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">BEGIN</span> <span class="n">TRANSACTION</span><span class="p">;</span>
+<span class="c1">-- copy / paste 1,000 of these ...</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test</span> <span class="p">(</span> <span class="k">data</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;this is a good sized line of text.&#39;</span> <span class="p">);</span>
+<span class="c1">-- put this after the 1,000 INSERT statements</span>
+<span class="k">END</span> <span class="n">TRANSACTION</span><span class="p">;</span>
+</pre></div>
+</div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"> <span class="pre">BEGIN</span> <span class="pre">TRANSACTION;</span> <span class="pre">--</span> <span class="pre">copy</span> <span class="pre">/</span> <span class="pre">paste</span> <span class="pre">1,000</span> <span class="pre">of</span> <span class="pre">these</span> <span class="pre">...</span> <span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">test</span> <span class="pre">(</span> <span class="pre">data</span> <span class="pre">)</span> <span class="pre">VALUES</span> <span class="pre">(</span> <span class="pre">'this</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">good</span> <span class="pre">sized</span> <span class="pre">line</span> <span class="pre">of</span> <span class="pre">text.'</span> <span class="pre">);</span> <span class="pre">--</span> <span class="pre">put</span> <span class="pre">this</span> <span class="pre">after</span> <span class="pre">the</span> <span class="pre">1,000</span> <span class="pre">INSERT</span> <span class="pre">statements</span> <span class="pre">END</span> <span class="pre">TRANSACTION;</span></code></p></li>
 <li><p>Without the begin and end transaction, the speed in SQLite is ~20 times slower.</p></li>
 </ul>
 </div>
