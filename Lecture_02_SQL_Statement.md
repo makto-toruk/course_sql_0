@@ -104,7 +104,6 @@ Counting Rows
 - `SELECT COUNT(*) FROM Country WHERE Population > 100000000;`
 - `SELECT COUNT(*) FROM Country WHERE Population > 100000000 AND Continent = 'Europe' ;`
     - can add conditions other than population
-
 - `SELECT COUNT(*) FROM Country;`
     - this counts ALL rows
 - `SELECT COUNT(LifeExpectancy) FROM Country;`
@@ -118,20 +117,18 @@ Inserting Data
 - `SELECT * FROM customer;`
 
 - To add a new row:
-```sql
-INSERT INTO customer (name, address, city, state, zip) 
-    VALUES ('Fred Flintstone', '123 Cobblestone Way', 'Bedrock', 'CA', '91234');
-```
-
+    ```sql
+    INSERT INTO customer (name, address, city, state, zip) 
+        VALUES ('Fred Flintstone', '123 Cobblestone Way', 'Bedrock', 'CA', '91234');
+    ```
 - To populate some columns in a row:
-```sql
-INSERT INTO customer (name, city, state) 
-    VALUES ('Jimi Hendrix', 'Renton', 'WA');
-```
+    ```sql
+    INSERT INTO customer (name, city, state) 
+        VALUES ('Jimi Hendrix', 'Renton', 'WA');
+    ```
 - `SELECT COUNT(address) FROM customer` returns 4
-    
-- Note: can use id as a field in insert
-- but if id exists, then SQL returns error. i.e, insert can't overwrite
+- Note: can use `id` as a field in insert
+- but if `id` exists, then SQL returns error. i.e, insert can't overwrite
 
 ## 2.8 UPDATE
 Updating Data (or Changing data)
@@ -143,7 +140,7 @@ UPDATE customer SET address = '123 Music Avenue', zip = '98056' WHERE id = 5;
 UPDATE customer SET address = '2603 S Washington St', zip = '98056' WHERE id = 5;
 UPDATE customer SET address = NULL, zip = NULL WHERE id = 5;
 ```
-- NULL is a special value (no data)
+- `NULL` is a special value (no data)
     
 ## 2.9 DELETE
 Deleting Data
@@ -155,5 +152,5 @@ SELECT * FROM customer;
 DELETE FROM customer WHERE id = 5;
 SELECT * FROM customer;
 ```
-- Note: if you want to delete an entry in a column, UPDATE to NULL
-- If you want to delete an entire row, then use DELETE
+- Note: if you want to delete an entry in a column, `UPDATE` to `NULL`
+- If you want to delete an entire row, then use `DELETE`
