@@ -71,6 +71,7 @@ CREATE TABLE test (
     - correct way to query NULL value
 - `SELECT * FROM test WHERE a IS NOT NULL;`
     - query non-NULL values
+---
 - `INSERT INTO test ( a, b, c ) VALUES ( 0, NULL, '' );`
     - 0 is not a NULL value
     - '' is not a NULL value
@@ -93,7 +94,7 @@ CREATE TABLE test (
 ```    
 - `INSERT INTO test VALUES ( 1, 'this', 'that' );`
 - `SELECT * FROM test;`
-<br><br>
+---
 - `INSERT INTO test ( b, c ) VALUES ( 'one', 'two' );`
 - `INSERT INTO test ( a, c ) VALUES ( 1, 'two' );`
     - The above two fail
@@ -109,7 +110,7 @@ CREATE TABLE test (
 - `INSERT INTO test ( a, b ) VALUES ( 'one', 'two' );`
 - `SELECT * FROM test;`
     - adds NULL to column `c` by default.
-<br><br>
+---
 Replace first statement with
 - `CREATE TABLE test ( a TEXT, b TEXT, c TEXT NOT NULL );`
     - Fails. Can't insert into two columns when the other column has a not null constraint
@@ -131,7 +132,6 @@ INSERT INTO test VALUES ( 'two', 'three', 'four');
 INSERT INTO test VALUES ( 'three', 'four', 'five');
 SELECT * FROM test;
 ```
----
 - Suppose you want to add a column:
     - `ALTER TABLE test ADD d TEXT;`
 - You can also use constraints:
@@ -140,7 +140,7 @@ SELECT * FROM test;
 
 ## 3.8 ID
 - Typically ID columns are automatically populated. This column hold a unique value for each row in a table.
-- How you create it depends on the database system. These instructions are sepcific to SQLite.
+- How you create it depends on the database system. These instructions are specific to SQLite.
 ```sql
 -- test.db
 CREATE TABLE test (
@@ -162,27 +162,41 @@ DROP TABLE IF EXISTS test;
 - How do we query the database for specific data? Using WHERE.
 - `SELECT * FROM Country;`
     - Selects everything
-- `SELECT Name, Continent, Population FROM Country 
-  WHERE Population < 100000 ORDER BY Population DESC;`
-    - Selects particular columns
-        - where population < 100000
-        - and orders by descending order of population
-- `SELECT Name, Continent, Population FROM Country 
-  WHERE Population < 100000 OR Population IS NULL ORDER BY Population DESC;`
-    - remember NULL is not a value, so to include this add another clause to WHERE using the OR operator.
-- `SELECT Name, Continent, Population FROM Country 
-  WHERE Population < 100000 AND Continent = 'Oceania' ORDER BY Population DESC;`
-    - we can also add another clause using the AND operator.
-- `SELECT Name, Continent, Population FROM Country 
-  WHERE Name LIKE '\%island\%' ORDER BY Name;`
-    - the LIKE operator filters results 
+- To select particular columns
+    - where population < 100000
+    - and ordered by descending order of population
+    ```sql
+    SELECT Name, Continent, Population FROM Country 
+        WHERE Population < 100000 
+        ORDER BY Population DESC;
+    ```
+- Recall that `NULL` is not value, and to include them use
+    ```sql
+    SELECT Name, Continent, Population FROM Country 
+        WHERE Population < 100000 OR Population IS NULL 
+        ORDER BY Population DESC;
+    ```
+    - the `OR` operator works in `WHERE` clauses
+- The `AND` operator also works:
+    ```sql
+    SELECT Name, Continent, Population FROM Country 
+        WHERE Population < 100000 AND Continent = 'Oceania' 
+        ORDER BY Population DESC;
+    ```
+- The `LIKE` operator filters results:
+    ```sql
+    SELECT Name, Continent, Population FROM Country 
+        WHERE Name LIKE '%island%' ORDER BY Name;
+    ```
     - the percent sign is a 'wildcard'. By placing on either sign, we query data which have island anywhere in the string.
-    - if `'\%island'`, this queries data that end with island
-    - to begin with island, `'island\%'`
-    - another example `'_a%'` => first character can be anything, second character must be a string.
-- `SELECT Name, Continent, Population FROM Country 
- WHERE Continent IN ( 'Europe', 'Asia' ) ORDER BY Name;`
-     - to match values _in_ a list, the IN operator is used.
+    - if `'%island'`, this queries data that end with island
+    - to begin with island, `'island%'`
+    - another example: `'_a%'` => first character can be anything, second character must be a string.
+- To match values _in_ a list, the `IN` operator is used.
+    ```sql
+    SELECT Name, Continent, Population FROM Country 
+        WHERE Continent IN ( 'Europe', 'Asia' ) ORDER BY Name;
+    ```
      
 ## 3.10 SELECT DISTINCT
 ```sql
@@ -223,13 +237,13 @@ SELECT * FROM test;
 - `SELECT Name FROM Country ORDER BY Name;`
     - _sorts_ by the name column (ASCII order, default is ascending)
 - `SELECT Name FROM Country ORDER BY Name DESC;`
-    - _sorts_ be descending order
+    - _sorts_ in descending order
 - `SELECT Name FROM Country ORDER BY Name ASC;`
     - same as default
 - `SELECT Name, Continent FROM Country ORDER BY Continent, Name;`
     - you can also sort by multiple things. First by continent, and within continent, individual countries are also sorted
 - `SELECT Name, Continent, Region FROM Country ORDER BY Continent DESC, Region, Name;`
-    - you can make it more complicated with each being ASC or DESC
+    - you can make it more complicated with each being `ASC` or `DESC`
 
 ## 3.12 CASE
 Use when you need conditional expressions
