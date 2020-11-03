@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4 Relationships &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
+    <title>4. Relationships &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -36,8 +36,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5 Strings" href="Lecture_05_Strings.html" />
-    <link rel="prev" title="3 Fundamental Concepts" href="Lecture_03_Fundamental_Concepts.html" />
+    <link rel="next" title="5. Strings" href="Lecture_05_Strings.html" />
+    <link rel="prev" title="3. Fundamental Concepts" href="Lecture_03_Fundamental_Concepts.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -71,67 +71,62 @@
   <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_01_Introduction.html">
-   1 Installation
+   1. Installation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_02_SQL_Statement.html">
-   2 SQL Statement
+   2. SQL Statement
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_03_Fundamental_Concepts.html">
-   3 Fundamental Concepts
+   3. Fundamental Concepts
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   4 Relationships
+   4. Relationships
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_05_Strings.html">
-   5 Strings
+   5. Strings
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_06_Numbers.html">
-   6 Numbers
+   6. Numbers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_07_Dates_Times.html">
-   7 Dates and Times
+   7. Dates and Times
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_08_Aggregates.html">
-   8 Aggregates
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Lecture_08_Aggregates.html#distinct-aggregates">
-   8.3 DISTINCT Aggregates
+   8. Aggregates
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_09_Transactions.html">
-   9 Transactions
+   9. Transactions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_10_Triggers.html">
-   10 Triggers
+   10. Triggers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_11_Views_Subselects.html">
-   11 Views and Subselects
+   11. Views and Subselects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_12_CRUD_Application.html">
-   12 A Simple CRUD Application
+   12. A Simple CRUD Application
   </a>
  </li>
 </ul>
@@ -176,9 +171,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Lecture_04_Relationships.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/Lecture_04_Relationships.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -199,7 +194,7 @@
             href="https://github.com/makto-toruk/course_sql_0/issues/new?title=Issue%20on%20page%20%2FLecture_04_Relationships.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_04_Relationships.ipynb"><button
+        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_04_Relationships.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -212,28 +207,6 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/makto-toruk/course_sql_0/master?urlpath=tree/Lecture_04_Relationships.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/makto-toruk/course_sql_0/blob/master/Lecture_04_Relationships.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
 
     </div>
 
@@ -270,22 +243,18 @@
               <div>
                 
   <div class="section" id="relationships">
-<h1>4 Relationships<a class="headerlink" href="#relationships" title="Permalink to this headline">¶</a></h1>
-<p>Tables often contain information related to another tables. You can perform operations across tables using JOIN</p>
+<h1>4. Relationships<a class="headerlink" href="#relationships" title="Permalink to this headline">¶</a></h1>
+<p>Tables often contain information related to another tables. You can perform operations across tables using <code class="docutils literal notranslate"><span class="pre">JOIN</span></code></p>
 <div class="section" id="join-fundamentals">
 <h2>4.1 JOIN fundamentals<a class="headerlink" href="#join-fundamentals" title="Permalink to this headline">¶</a></h2>
-<p>– test.db</p>
 <ul class="simple">
-<li><p>Inner join: default. Includes rows from both tables where the JOIN condition is met.
+<li><p>Inner join: default. Includes rows from both tables where the <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> condition is met.
 <img src="figures/inner_join.png" width="400"></p></li>
 <li><p>Outer join:</p>
 <ul>
-<li><p>left outer join: rows where the condition is met + all the rows from the table on the left where condition is not met
-<img src="figures/left_outer_join.png" width="400"></p></li>
-<li><p>right outer join: similar to above. Can be rewritten as a left outer join by swapping the order
-<img src="figures/right_outer_join.png" width="400"></p></li>
-<li><p>full outer join: combines left and right joins
-<img src="figures/full_outer_join.png" width="400"></p></li>
+<li><p>left outer join: rows where the condition is met + all the rows from the table on the left where condition is not met <br> <img src="figures/left_outer_join.png" width="400"></p></li>
+<li><p>right outer join: similar to above. Can be rewritten as a left outer join by swapping the order <br> <img src="figures/right_outer_join.png" width="400"></p></li>
+<li><p>full outer join: combines left and right joins <br> <img src="figures/full_outer_join.png" width="400"></p></li>
 </ul>
 </li>
 </ul>
@@ -295,12 +264,11 @@
 <ul class="simple">
 <li><p>join example tables, left and right</p></li>
 </ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">left</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span><span class="p">,</span> <span class="n">description</span> <span class="nb">TEXT</span> <span class="p">);</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- test.db</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">left</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span><span class="p">,</span> <span class="n">description</span> <span class="nb">TEXT</span> <span class="p">);</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">right</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span><span class="p">,</span> <span class="n">description</span> <span class="nb">TEXT</span> <span class="p">);</span>
-</pre></div>
-</div>
-<hr class="docutils" />
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">left</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;left 01&#39;</span> <span class="p">);</span>
+<span class="c1">--</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">left</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;left 01&#39;</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">left</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;left 02&#39;</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">left</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;left 03&#39;</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">left</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;left 04&#39;</span> <span class="p">);</span>
@@ -309,10 +277,8 @@
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">left</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;left 07&#39;</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">left</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;left 08&#39;</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">left</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;left 09&#39;</span> <span class="p">);</span>
-</pre></div>
-</div>
-<hr class="docutils" />
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">right</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;right 06&#39;</span> <span class="p">);</span>
+<span class="c1">--</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">right</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;right 06&#39;</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">right</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;right 07&#39;</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">right</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;right 08&#39;</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">right</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;right 09&#39;</span> <span class="p">);</span>
@@ -321,42 +287,36 @@
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">right</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;right 12&#39;</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">right</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;right 13&#39;</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">right</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;right 14&#39;</span> <span class="p">);</span>
-</pre></div>
-</div>
-<hr class="docutils" />
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">left</span><span class="p">;</span>
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">right</span><span class="p">;</span>
-</pre></div>
-</div>
-<hr class="docutils" />
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">l</span><span class="p">.</span><span class="n">description</span> <span class="k">AS</span> <span class="k">left</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">description</span> <span class="k">AS</span> <span class="k">right</span>
+<span class="c1">--</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">left</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="k">right</span><span class="p">;</span>
+<span class="c1">--</span>
+<span class="k">SELECT</span> <span class="n">l</span><span class="p">.</span><span class="n">description</span> <span class="k">AS</span> <span class="k">left</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">description</span> <span class="k">AS</span> <span class="k">right</span>
   <span class="k">FROM</span> <span class="k">left</span> <span class="k">AS</span> <span class="n">l</span>
   <span class="k">JOIN</span> <span class="k">right</span> <span class="k">AS</span> <span class="n">r</span> <span class="k">ON</span> <span class="n">l</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">id</span>
   <span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>The joint query. Inner join where the left and right IDs match, show their descriptions. In the first line, you provide alias for the two columns since they have the same column</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> query. Inner join where the left and right IDs match, show their descriptions. In the first line, you provide alias for the two columns since they have the same column</p></li>
 <li><p>to do left outer join, <code class="docutils literal notranslate"><span class="pre">LEFT</span> <span class="pre">JOIN</span> <span class="pre">right</span> <span class="pre">AS</span> <span class="pre">r</span> <span class="pre">ON</span> <span class="pre">l.id</span> <span class="pre">=</span> <span class="pre">r.id</span></code></p></li>
 </ul>
 <hr class="docutils" />
-<ul class="simple">
-<li><p>restore database</p></li>
-</ul>
+<ul>
+<li><p>restore database</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">left</span><span class="p">;</span>
 <span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">right</span><span class="p">;</span>
 </pre></div>
 </div>
-<hr class="docutils" />
-<ul class="simple">
-<li><p>sale example</p></li>
+</li>
 </ul>
+<hr class="docutils" />
+<ul>
+<li><p>sale example</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">sale</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">item</span><span class="p">;</span>
-</pre></div>
-</div>
-<hr class="docutils" />
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span> <span class="k">AS</span> <span class="n">sale</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">price</span> 
+<span class="c1">--</span>
+<span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span> <span class="k">AS</span> <span class="n">sale</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">price</span> 
   <span class="k">FROM</span> <span class="n">sale</span> <span class="k">AS</span> <span class="n">s</span>
   <span class="k">JOIN</span> <span class="n">item</span> <span class="k">AS</span> <span class="n">i</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span>
   <span class="p">;</span>
@@ -365,15 +325,20 @@
 <ul class="simple">
 <li><p>slightly better example. Obtain sale ID, name of item and price from two different tables (sale and item)</p></li>
 </ul>
+</li>
+</ul>
 <hr class="docutils" />
+<ul>
+<li><p>another example</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span> <span class="k">AS</span> <span class="n">sale</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="nb">date</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">description</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">price</span> 
   <span class="k">FROM</span> <span class="n">sale</span> <span class="k">AS</span> <span class="n">s</span>
   <span class="k">JOIN</span> <span class="n">item</span> <span class="k">AS</span> <span class="n">i</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">item_id</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="n">id</span>
   <span class="p">;</span>
 </pre></div>
 </div>
+</li>
+</ul>
 </div>
-<hr class="docutils" />
 <div class="section" id="junction">
 <h2>4.3 Junction<a class="headerlink" href="#junction" title="Permalink to this headline">¶</a></h2>
 <p>In practice, tables have many-to-many relationships.</p>
@@ -391,16 +356,14 @@
 <li><p>these can be ordered as well</p></li>
 </ul>
 <hr class="docutils" />
-<ul class="simple">
-<li><p>What if you want your table to include a customer without sales?</p></li>
-</ul>
+<ul>
+<li><p>What if you want your table to include a customer without sales?</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">customer</span> <span class="p">(</span> <span class="n">name</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;Jane Smith&#39;</span> <span class="p">);</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">customer</span><span class="p">;</span><span class="o">`</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Use left join to join other tables <em>with Customer</em>.</p></li>
-</ul>
+</li>
+<li><p>Use left join to join other tables <em>with Customer</em>.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">c</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">Cust</span><span class="p">,</span> <span class="k">c</span><span class="p">.</span><span class="n">zip</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">Item</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">description</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">quantity</span> <span class="k">AS</span> <span class="n">Quan</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">price</span> <span class="k">AS</span> <span class="n">Price</span>
   <span class="k">FROM</span> <span class="n">customer</span> <span class="k">AS</span> <span class="k">c</span>
   <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">sale</span> <span class="k">AS</span> <span class="n">s</span> <span class="k">ON</span> <span class="n">s</span><span class="p">.</span><span class="n">customer_id</span> <span class="o">=</span> <span class="k">c</span><span class="p">.</span><span class="n">id</span>
@@ -409,7 +372,7 @@
 <span class="p">;</span>
 </pre></div>
 </div>
-<ul class="simple">
+</li>
 <li><p>This is amazing. It adds multiple sale entries for customers in separate rows.</p></li>
 </ul>
 </div>
@@ -443,8 +406,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="Lecture_03_Fundamental_Concepts.html" title="previous page">3 Fundamental Concepts</a>
-    <a class='right-next' id="next-link" href="Lecture_05_Strings.html" title="next page">5 Strings</a>
+    <a class='left-prev' id="prev-link" href="Lecture_03_Fundamental_Concepts.html" title="previous page">3. Fundamental Concepts</a>
+    <a class='right-next' id="next-link" href="Lecture_05_Strings.html" title="next page">5. Strings</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

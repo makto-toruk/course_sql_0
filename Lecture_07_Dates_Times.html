@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7 Dates and Times &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
+    <title>7. Dates and Times &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -36,8 +36,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8 Aggregates" href="Lecture_08_Aggregates.html" />
-    <link rel="prev" title="6 Numbers" href="Lecture_06_Numbers.html" />
+    <link rel="next" title="8. Aggregates" href="Lecture_08_Aggregates.html" />
+    <link rel="prev" title="6. Numbers" href="Lecture_06_Numbers.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -71,67 +71,62 @@
   <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_01_Introduction.html">
-   1 Installation
+   1. Installation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_02_SQL_Statement.html">
-   2 SQL Statement
+   2. SQL Statement
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_03_Fundamental_Concepts.html">
-   3 Fundamental Concepts
+   3. Fundamental Concepts
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_04_Relationships.html">
-   4 Relationships
+   4. Relationships
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_05_Strings.html">
-   5 Strings
+   5. Strings
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_06_Numbers.html">
-   6 Numbers
+   6. Numbers
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   7 Dates and Times
+   7. Dates and Times
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_08_Aggregates.html">
-   8 Aggregates
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Lecture_08_Aggregates.html#distinct-aggregates">
-   8.3 DISTINCT Aggregates
+   8. Aggregates
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_09_Transactions.html">
-   9 Transactions
+   9. Transactions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_10_Triggers.html">
-   10 Triggers
+   10. Triggers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_11_Views_Subselects.html">
-   11 Views and Subselects
+   11. Views and Subselects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_12_CRUD_Application.html">
-   12 A Simple CRUD Application
+   12. A Simple CRUD Application
   </a>
  </li>
 </ul>
@@ -176,9 +171,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Lecture_07_Dates_Times.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/Lecture_07_Dates_Times.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -199,7 +194,7 @@
             href="https://github.com/makto-toruk/course_sql_0/issues/new?title=Issue%20on%20page%20%2FLecture_07_Dates_Times.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_07_Dates_Times.ipynb"><button
+        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_07_Dates_Times.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -212,28 +207,6 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/makto-toruk/course_sql_0/master?urlpath=tree/Lecture_07_Dates_Times.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/makto-toruk/course_sql_0/blob/master/Lecture_07_Dates_Times.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
 
     </div>
 
@@ -253,6 +226,13 @@
   <a class="reference internal nav-link" href="#date-time-functions">
    7.2 DATE/TIME functions
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datetime-arithmetic">
+     Datetime arithmetic
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -265,7 +245,7 @@
               <div>
                 
   <div class="section" id="dates-and-times">
-<h1>7 Dates and Times<a class="headerlink" href="#dates-and-times" title="Permalink to this headline">¶</a></h1>
+<h1>7. Dates and Times<a class="headerlink" href="#dates-and-times" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="standard-format">
 <h2>7.1 Standard format<a class="headerlink" href="#standard-format" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -281,14 +261,13 @@
 </li>
 <li><p>SQL date and time types</p>
 <ul>
-<li><p>DATE, TIME, DATETIME, YEAR, INTERVAL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATE</span></code>, <code class="docutils literal notranslate"><span class="pre">TIME</span></code>, <code class="docutils literal notranslate"><span class="pre">DATETIME</span></code>, <code class="docutils literal notranslate"><span class="pre">YEAR</span></code>, <code class="docutils literal notranslate"><span class="pre">INTERVAL</span></code></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="date-time-functions">
 <h2>7.2 DATE/TIME functions<a class="headerlink" href="#date-time-functions" title="Permalink to this headline">¶</a></h2>
-<p>– :memory:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">DATETIME('now');</span></code></p>
 <ul>
@@ -303,11 +282,13 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">TIME('now');</span></code></p>
 <ul>
-<li><p>returns only time
-<br><br>
-Datetime arithmetic</p></li>
+<li><p>returns only time</p></li>
 </ul>
 </li>
+</ul>
+<div class="section" id="datetime-arithmetic">
+<h3>Datetime arithmetic<a class="headerlink" href="#datetime-arithmetic" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">DATETIME('now',</span> <span class="pre">'+1</span> <span class="pre">day');</span></code></p>
 <ul>
 <li><p>now + 1 day</p></li>
@@ -326,6 +307,7 @@ Datetime arithmetic</p></li>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">DATETIME('now',</span> <span class="pre">'+3</span> <span class="pre">hours',</span> <span class="pre">'+27</span> <span class="pre">minutes',</span> <span class="pre">'-1</span> <span class="pre">day',</span> <span class="pre">'+3</span> <span class="pre">years');</span></code></p></li>
 </ul>
+</div>
 </div>
 </div>
 
@@ -357,8 +339,8 @@ Datetime arithmetic</p></li>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="Lecture_06_Numbers.html" title="previous page">6 Numbers</a>
-    <a class='right-next' id="next-link" href="Lecture_08_Aggregates.html" title="next page">8 Aggregates</a>
+    <a class='left-prev' id="prev-link" href="Lecture_06_Numbers.html" title="previous page">6. Numbers</a>
+    <a class='right-next' id="next-link" href="Lecture_08_Aggregates.html" title="next page">8. Aggregates</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

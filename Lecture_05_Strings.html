@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5 Strings &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
+    <title>5. Strings &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -36,8 +36,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6 Numbers" href="Lecture_06_Numbers.html" />
-    <link rel="prev" title="4 Relationships" href="Lecture_04_Relationships.html" />
+    <link rel="next" title="6. Numbers" href="Lecture_06_Numbers.html" />
+    <link rel="prev" title="4. Relationships" href="Lecture_04_Relationships.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -71,67 +71,62 @@
   <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_01_Introduction.html">
-   1 Installation
+   1. Installation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_02_SQL_Statement.html">
-   2 SQL Statement
+   2. SQL Statement
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_03_Fundamental_Concepts.html">
-   3 Fundamental Concepts
+   3. Fundamental Concepts
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_04_Relationships.html">
-   4 Relationships
+   4. Relationships
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5 Strings
+   5. Strings
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_06_Numbers.html">
-   6 Numbers
+   6. Numbers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_07_Dates_Times.html">
-   7 Dates and Times
+   7. Dates and Times
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_08_Aggregates.html">
-   8 Aggregates
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Lecture_08_Aggregates.html#distinct-aggregates">
-   8.3 DISTINCT Aggregates
+   8. Aggregates
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_09_Transactions.html">
-   9 Transactions
+   9. Transactions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_10_Triggers.html">
-   10 Triggers
+   10. Triggers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_11_Views_Subselects.html">
-   11 Views and Subselects
+   11. Views and Subselects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_12_CRUD_Application.html">
-   12 A Simple CRUD Application
+   12. A Simple CRUD Application
   </a>
  </li>
 </ul>
@@ -176,9 +171,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Lecture_05_Strings.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/Lecture_05_Strings.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -199,7 +194,7 @@
             href="https://github.com/makto-toruk/course_sql_0/issues/new?title=Issue%20on%20page%20%2FLecture_05_Strings.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_05_Strings.ipynb"><button
+        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_05_Strings.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -212,28 +207,6 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/makto-toruk/course_sql_0/master?urlpath=tree/Lecture_05_Strings.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/makto-toruk/course_sql_0/blob/master/Lecture_05_Strings.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
 
     </div>
 
@@ -280,7 +253,7 @@
               <div>
                 
   <div class="section" id="strings">
-<h1>5 Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h1>
+<h1>5. Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="literal-string">
 <h2>5.1 Literal string<a class="headerlink" href="#literal-string" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -298,7 +271,7 @@
 </li>
 <li><p>String functions:</p>
 <ul>
-<li><p>SUBSTR, LENGTH, TRIM, UPPER, LOWER</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUBSTR</span></code>, <code class="docutils literal notranslate"><span class="pre">LENGTH</span></code>, <code class="docutils literal notranslate"><span class="pre">TRIM</span></code>, <code class="docutils literal notranslate"><span class="pre">UPPER</span></code>, <code class="docutils literal notranslate"><span class="pre">LOWER</span></code></p></li>
 <li><p>these vary from system-to-system</p></li>
 </ul>
 </li>
@@ -306,7 +279,9 @@
 </div>
 <div class="section" id="length">
 <h2>5.2 LENGTH<a class="headerlink" href="#length" title="Permalink to this headline">¶</a></h2>
-<p>– world.db</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- world.db</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">LENGTH('string');</span></code></p>
 <ul>
@@ -322,20 +297,22 @@
 </div>
 <div class="section" id="substr">
 <h2>5.3 SUBSTR<a class="headerlink" href="#substr" title="Permalink to this headline">¶</a></h2>
-<p>– album.db</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">SUBSTR('this</span> <span class="pre">string',</span> <span class="pre">6);</span></code></p>
 <ul>
+<li><p>returns <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p></li>
 <li><p>second argument is starting position of substring (starting from 1)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">SUBSTR('this</span> <span class="pre">string',</span> <span class="pre">6,</span> <span class="pre">3);</span></code></p>
 <ul>
+<li><p>returns <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
 <li><p>third argument is number of characters to return</p></li>
 </ul>
 </li>
 </ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">released</span><span class="p">,</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- album.db</span>
+<span class="k">SELECT</span> <span class="n">released</span><span class="p">,</span>
     <span class="n">SUBSTR</span><span class="p">(</span><span class="n">released</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="k">AS</span> <span class="k">year</span><span class="p">,</span>
     <span class="n">SUBSTR</span><span class="p">(</span><span class="n">released</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">month</span><span class="p">,</span>
     <span class="n">SUBSTR</span><span class="p">(</span><span class="n">released</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">day</span>
@@ -346,7 +323,7 @@
 </div>
 <ul class="simple">
 <li><p>notice that you can order by released (or date)</p></li>
-<li><p>SQL standard doesn’t include a SUBSTR but most major systems have this feature (name and usage may differ)</p></li>
+<li><p>SQL standard doesn’t include a <code class="docutils literal notranslate"><span class="pre">SUBSTR</span></code> but most major systems have this feature (name and usage may differ)</p></li>
 </ul>
 </div>
 <div class="section" id="trim">
@@ -376,8 +353,10 @@
 </div>
 <div class="section" id="upper-lower">
 <h2>5.5 UPPER/LOWER<a class="headerlink" href="#upper-lower" title="Permalink to this headline">¶</a></h2>
-<p>– world.db
-Used for normalizing data which makes comparing strings more effective.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- world.db</span>
+</pre></div>
+</div>
+<p>Used for normalizing data which makes comparing strings more effective.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">'StRiNg'</span> <span class="pre">=</span> <span class="pre">'string';</span></code></p>
 <ul>
@@ -432,8 +411,8 @@ Used for normalizing data which makes comparing strings more effective.</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="Lecture_04_Relationships.html" title="previous page">4 Relationships</a>
-    <a class='right-next' id="next-link" href="Lecture_06_Numbers.html" title="next page">6 Numbers</a>
+    <a class='left-prev' id="prev-link" href="Lecture_04_Relationships.html" title="previous page">4. Relationships</a>
+    <a class='right-next' id="next-link" href="Lecture_06_Numbers.html" title="next page">6. Numbers</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

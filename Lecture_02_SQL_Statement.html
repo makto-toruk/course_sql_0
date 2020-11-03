@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2 SQL Statement &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
+    <title>2. SQL Statement &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -36,8 +36,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3 Fundamental Concepts" href="Lecture_03_Fundamental_Concepts.html" />
-    <link rel="prev" title="1 Installation" href="Lecture_01_Introduction.html" />
+    <link rel="next" title="3. Fundamental Concepts" href="Lecture_03_Fundamental_Concepts.html" />
+    <link rel="prev" title="1. Installation" href="Lecture_01_Introduction.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -71,62 +71,62 @@
   <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_01_Introduction.html">
-   1 Installation
+   1. Installation
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2 SQL Statement
+   2. SQL Statement
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_03_Fundamental_Concepts.html">
-   3 Fundamental Concepts
+   3. Fundamental Concepts
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_04_Relationships.html">
-   4 Relationships
+   4. Relationships
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_05_Strings.html">
-   5 Strings
+   5. Strings
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_06_Numbers.html">
-   6 Numbers
+   6. Numbers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_07_Dates_Times.html">
-   7 Dates and Times
+   7. Dates and Times
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_08_Aggregates.html">
-   8 Aggregates
+   8. Aggregates
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_09_Transactions.html">
-   9 Transactions
+   9. Transactions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_10_Triggers.html">
-   10 Triggers
+   10. Triggers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_11_Views_Subselects.html">
-   11 Views and Subselects
+   11. Views and Subselects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_12_CRUD_Application.html">
-   12 A Simple CRUD Application
+   12. A Simple CRUD Application
   </a>
  </li>
 </ul>
@@ -171,9 +171,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Lecture_02_SQL_Statement.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/Lecture_02_SQL_Statement.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -194,7 +194,7 @@
             href="https://github.com/makto-toruk/course_sql_0/issues/new?title=Issue%20on%20page%20%2FLecture_02_SQL_Statement.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_02_SQL_Statement.ipynb"><button
+        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_02_SQL_Statement.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -207,28 +207,6 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/makto-toruk/course_sql_0/master?urlpath=tree/Lecture_02_SQL_Statement.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/makto-toruk/course_sql_0/blob/master/Lecture_02_SQL_Statement.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
 
     </div>
 
@@ -295,7 +273,7 @@
               <div>
                 
   <div class="section" id="sql-statement">
-<h1>2 SQL Statement<a class="headerlink" href="#sql-statement" title="Permalink to this headline">¶</a></h1>
+<h1>2. SQL Statement<a class="headerlink" href="#sql-statement" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="sql-overview">
 <h2>2.1 SQL Overview<a class="headerlink" href="#sql-overview" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -312,14 +290,12 @@ These parts together constitute a statement.</p></li>
 </li>
 <li><p>CRUD: 4 fundamental database system functions. Create Read Update Delete.</p></li>
 </ul>
-<ol class="simple">
+<ol>
 <li><p>SELECT: all queries that return values. (R in CRUD)</p></li>
 <li><p>INSERT: add a row to a table (C in CRUD).</p>
 <ul class="simple">
 <li><p>example:</p></li>
 </ul>
-</li>
-</ol>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">Customer</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="k">state</span><span class="p">)</span>
     <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Jimi Hendrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Renton&#39;</span><span class="p">,</span> <span class="s1">&#39;WA&#39;</span><span class="p">);</span>
 </pre></div>
@@ -327,13 +303,11 @@ These parts together constitute a statement.</p></li>
 <ul class="simple">
 <li><p>Broken into two lines to improve readability.</p></li>
 </ul>
-<ol class="simple">
+</li>
 <li><p>UPDATE: to change data (U in CRUD)</p>
 <ul class="simple">
 <li><p>example:</p></li>
 </ul>
-</li>
-</ol>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="n">customer</span> 
 <span class="k">SET</span> 
     <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;123 Music Avenue&#39;</span><span class="p">,</span> 
@@ -341,7 +315,7 @@ These parts together constitute a statement.</p></li>
 <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 </pre></div>
 </div>
-<ol class="simple">
+</li>
 <li><p>DELETE: remove rows in a table (D in CRUD).</p>
 <ul class="simple">
 <li><p>example: <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">FROM</span> <span class="pre">Customer</span> <span class="pre">WHERE</span> <span class="pre">id</span> <span class="pre">=</span> <span class="pre">4;</span></code></p></li>
@@ -361,8 +335,7 @@ These parts together constitute a statement.</p></li>
 <li><p>Each row in a table has a unique key. Sometimes hidden, but table must have one.</p></li>
 <li><p>Tables are related by keys.</p>
 <ul>
-<li><p>example table: id | item_id | cust_id | quant | price
-where item_id and cust_id are keys of other tables.</p></li>
+<li><p>example table: <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">|</span> <span class="pre">item_id</span> <span class="pre">|</span> <span class="pre">cust_id</span> <span class="pre">|</span> <span class="pre">quant</span> <span class="pre">|</span> <span class="pre">price</span></code> where <code class="docutils literal notranslate"><span class="pre">item_id</span></code> and <code class="docutils literal notranslate"><span class="pre">cust_id</span></code> are keys of other tables.</p></li>
 <li><p>helps use joint queries.</p></li>
 </ul>
 </li>
@@ -370,8 +343,10 @@ where item_id and cust_id are keys of other tables.</p></li>
 </div>
 <div class="section" id="select">
 <h2>2.3 SELECT<a class="headerlink" href="#select" title="Permalink to this headline">¶</a></h2>
-<p>examples:
-– world.db</p>
+<p>examples:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- world.db</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">'Hello,</span> <span class="pre">World';</span></code></p>
 <ul>
@@ -385,15 +360,12 @@ where item_id and cust_id are keys of other tables.</p></li>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
 <ul>
-<li><ul>
-<li><p>indicates select all columns</p></li>
-</ul>
-</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> indicates select all columns</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name;</span></code></p>
 <ul>
-<li><p>ORDER BY clause</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> clause</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">LifeExpectancy</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name;</span></code></p>
@@ -415,8 +387,10 @@ where item_id and cust_id are keys of other tables.</p></li>
 </div>
 <div class="section" id="where">
 <h2>2.4 WHERE<a class="headerlink" href="#where" title="Permalink to this headline">¶</a></h2>
-<p>Selecting Rows
-– world.db</p>
+<p>Selecting Rows</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- world.db</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
 <ul>
@@ -425,7 +399,7 @@ where item_id and cust_id are keys of other tables.</p></li>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe';</span></code></p>
 <ul>
-<li><p>limits to rows WHERE continent is Europe. Europe is a literal string, so use single quotes. Without single quotes, it looks for column with name Europe.</p></li>
+<li><p>limits to rows <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> continent is Europe. Europe is a literal string, so use single quotes. Without single quotes, it looks for column with name Europe.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe'</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name;</span></code></p>
@@ -440,19 +414,19 @@ where item_id and cust_id are keys of other tables.</p></li>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Name,</span> <span class="pre">Continent,</span> <span class="pre">Region</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe'</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">Name</span> <span class="pre">LIMIT</span> <span class="pre">5</span> <span class="pre">OFFSET</span> <span class="pre">5;</span></code></p>
 <ul>
-<li><p>starts the limit after OFFSET (or after the first 5).</p></li>
+<li><p>starts the limit after <code class="docutils literal notranslate"><span class="pre">OFFSET</span></code> (or after the first 5).</p></li>
 </ul>
 </li>
-<li><p>ORDER BY has to be <em>after</em> any WHERE clause</p></li>
-<li><p>LIMIT has to be last</p></li>
-<li><p>FROM needs to be first</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> has to be <em>after</em> any <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIMIT</span></code> has to be last</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code> needs to be first</p></li>
 </ul>
 </div>
 <div class="section" id="columns">
 <h2>2.5 Columns<a class="headerlink" href="#columns" title="Permalink to this headline">¶</a></h2>
-<p>Selecting Columns
-– world.db</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Country</span><span class="p">;</span>
+<p>Selecting Columns</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- world.db</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Country</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Continent</span><span class="p">,</span> <span class="n">Region</span> <span class="k">FROM</span> <span class="n">Country</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">Name</span> <span class="k">AS</span> <span class="n">Country</span><span class="p">,</span> <span class="n">Continent</span><span class="p">,</span> <span class="n">Region</span> <span class="k">FROM</span> <span class="n">Country</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="n">Name</span> <span class="k">AS</span> <span class="n">Country</span><span class="p">,</span> <span class="n">Region</span><span class="p">,</span> <span class="n">Continent</span> <span class="k">FROM</span> <span class="n">Country</span><span class="p">;</span>
@@ -462,8 +436,10 @@ where item_id and cust_id are keys of other tables.</p></li>
 </div>
 <div class="section" id="count">
 <h2>2.6 COUNT<a class="headerlink" href="#count" title="Permalink to this headline">¶</a></h2>
-<p>Counting Rows
-– world.db</p>
+<p>Counting Rows</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- world.db</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
 <ul>
@@ -478,7 +454,7 @@ where item_id and cust_id are keys of other tables.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Population</span> <span class="pre">&gt;</span> <span class="pre">100000000;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">WHERE</span> <span class="pre">Population</span> <span class="pre">&gt;</span> <span class="pre">100000000</span> <span class="pre">AND</span> <span class="pre">Continent</span> <span class="pre">=</span> <span class="pre">'Europe'</span> <span class="pre">;</span></code></p>
 <ul>
-<li><p>can add conditiosn other than population</p></li>
+<li><p>can add conditions other than population</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
@@ -495,34 +471,34 @@ where item_id and cust_id are keys of other tables.</p></li>
 </div>
 <div class="section" id="insert">
 <h2>2.7 INSERT<a class="headerlink" href="#insert" title="Permalink to this headline">¶</a></h2>
-<p>Inserting Data
-– test.db</p>
-<ul class="simple">
+<p>Inserting Data</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- test.db</span>
+</pre></div>
+</div>
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">customer;</span></code></p></li>
-<li><p>To add a new row:</p></li>
-</ul>
+<li><p>To add a new row:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">customer</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="k">state</span><span class="p">,</span> <span class="n">zip</span><span class="p">)</span> 
     <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Fred Flintstone&#39;</span><span class="p">,</span> <span class="s1">&#39;123 Cobblestone Way&#39;</span><span class="p">,</span> <span class="s1">&#39;Bedrock&#39;</span><span class="p">,</span> <span class="s1">&#39;CA&#39;</span><span class="p">,</span> <span class="s1">&#39;91234&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>To populate some columns in a row:</p></li>
-</ul>
+</li>
+<li><p>To populate some columns in a row:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">customer</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="k">state</span><span class="p">)</span> 
     <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Jimi Hendrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Renton&#39;</span><span class="p">,</span> <span class="s1">&#39;WA&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<ul class="simple">
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(address)</span> <span class="pre">FROM</span> <span class="pre">customer</span></code> returns 4</p></li>
-<li><p>Note: can use id as a field in insert</p></li>
-<li><p>but if id exists, then SQL returns error. i.e, insert can’t overwrite</p></li>
+<li><p>Note: can use <code class="docutils literal notranslate"><span class="pre">id</span></code> as a field in insert</p></li>
+<li><p>but if <code class="docutils literal notranslate"><span class="pre">id</span></code> exists, then SQL returns error. i.e, insert can’t overwrite</p></li>
 </ul>
 </div>
 <div class="section" id="update">
 <h2>2.8 UPDATE<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
-<p>Updating Data (or Changing data)
-– test.db</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">customer</span><span class="p">;</span>
+<p>Updating Data (or Changing data)</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- test.db</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">customer</span><span class="p">;</span>
 <span class="k">UPDATE</span> <span class="n">customer</span> <span class="k">SET</span> <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;123 Music Avenue&#39;</span><span class="p">,</span> <span class="n">zip</span> <span class="o">=</span> <span class="s1">&#39;98056&#39;</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 <span class="c1">-- or `UPDATE customer SET address = &#39;123 Music Avenue&#39;, zip = &#39;98056&#39; WHERE name = &#39;Jimi Hendrix&#39;;</span>
 <span class="k">UPDATE</span> <span class="n">customer</span> <span class="k">SET</span> <span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;2603 S Washington St&#39;</span><span class="p">,</span> <span class="n">zip</span> <span class="o">=</span> <span class="s1">&#39;98056&#39;</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
@@ -530,14 +506,14 @@ where item_id and cust_id are keys of other tables.</p></li>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>NULL is a special value (no data)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> is a special value (no data)</p></li>
 </ul>
 </div>
 <div class="section" id="delete">
 <h2>2.9 DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
-<p>Deleting Data
-– test.db</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">customer</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<p>Deleting Data</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- test.db</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">customer</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 <span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">customer</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">customer</span><span class="p">;</span>
 <span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">customer</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
@@ -545,8 +521,8 @@ where item_id and cust_id are keys of other tables.</p></li>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Note: if you want to delete an entry in a column, UPDATE to NULL</p></li>
-<li><p>If you want to delete an entire row, then use DELETE</p></li>
+<li><p>Note: if you want to delete an entry in a column, <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> to <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+<li><p>If you want to delete an entire row, then use <code class="docutils literal notranslate"><span class="pre">DELETE</span></code></p></li>
 </ul>
 </div>
 </div>
@@ -579,8 +555,8 @@ where item_id and cust_id are keys of other tables.</p></li>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="Lecture_01_Introduction.html" title="previous page">1 Installation</a>
-    <a class='right-next' id="next-link" href="Lecture_03_Fundamental_Concepts.html" title="next page">3 Fundamental Concepts</a>
+    <a class='left-prev' id="prev-link" href="Lecture_01_Introduction.html" title="previous page">1. Installation</a>
+    <a class='right-next' id="next-link" href="Lecture_03_Fundamental_Concepts.html" title="next page">3. Fundamental Concepts</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

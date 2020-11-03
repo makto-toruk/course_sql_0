@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8 Aggregates &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
+    <title>8. Aggregates &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -36,8 +36,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9 Transactions" href="Lecture_09_Transactions.html" />
-    <link rel="prev" title="7 Dates and Times" href="Lecture_07_Dates_Times.html" />
+    <link rel="next" title="9. Transactions" href="Lecture_09_Transactions.html" />
+    <link rel="prev" title="7. Dates and Times" href="Lecture_07_Dates_Times.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -71,62 +71,62 @@
   <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_01_Introduction.html">
-   1 Installation
+   1. Installation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_02_SQL_Statement.html">
-   2 SQL Statement
+   2. SQL Statement
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_03_Fundamental_Concepts.html">
-   3 Fundamental Concepts
+   3. Fundamental Concepts
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_04_Relationships.html">
-   4 Relationships
+   4. Relationships
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_05_Strings.html">
-   5 Strings
+   5. Strings
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_06_Numbers.html">
-   6 Numbers
+   6. Numbers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_07_Dates_Times.html">
-   7 Dates and Times
+   7. Dates and Times
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   8 Aggregates
+   8. Aggregates
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_09_Transactions.html">
-   9 Transactions
+   9. Transactions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_10_Triggers.html">
-   10 Triggers
+   10. Triggers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_11_Views_Subselects.html">
-   11 Views and Subselects
+   11. Views and Subselects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_12_CRUD_Application.html">
-   12 A Simple CRUD Application
+   12. A Simple CRUD Application
   </a>
  </li>
 </ul>
@@ -171,9 +171,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Lecture_08_Aggregates.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/Lecture_08_Aggregates.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -194,7 +194,7 @@
             href="https://github.com/makto-toruk/course_sql_0/issues/new?title=Issue%20on%20page%20%2FLecture_08_Aggregates.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_08_Aggregates.ipynb"><button
+        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_08_Aggregates.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -207,28 +207,6 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/makto-toruk/course_sql_0/master?urlpath=tree/Lecture_08_Aggregates.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/makto-toruk/course_sql_0/blob/master/Lecture_08_Aggregates.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
 
     </div>
 
@@ -265,31 +243,29 @@
               <div>
                 
   <div class="section" id="aggregates">
-<h1>8 Aggregates<a class="headerlink" href="#aggregates" title="Permalink to this headline">¶</a></h1>
+<h1>8. Aggregates<a class="headerlink" href="#aggregates" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="aggregate-data">
 <h2>8.1 Aggregate Data<a class="headerlink" href="#aggregate-data" title="Permalink to this headline">¶</a></h2>
-<p>– world.db</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- world.db</span>
+</pre></div>
+</div>
 <ul>
-<li><p>COUNT is an aggregate function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">COUNT</span></code> is an aggregate function</p></li>
 </ul>
 </li>
-</ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> groups the results before calling <code class="docutils literal notranslate"><span class="pre">COUNT</span></code></p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">Region</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
   <span class="k">FROM</span> <span class="n">Country</span>
   <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">Region</span>
 <span class="p">;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>GROUP BY groups the results before calling COUNT</p></li>
-</ul>
-<p>– album.db</p>
-<ul class="simple">
-<li><p>This also works with join queries</p></li>
-</ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">Album</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">track_number</span><span class="p">)</span> <span class="k">as</span> <span class="n">Tracks</span>
+</li>
+<li><p>This also works with <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> queries</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- album.db</span>
+<span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">Album</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">track_number</span><span class="p">)</span> <span class="k">as</span> <span class="n">Tracks</span>
   <span class="k">FROM</span> <span class="n">track</span> <span class="k">AS</span> <span class="n">t</span>
   <span class="k">JOIN</span> <span class="n">album</span> <span class="k">AS</span> <span class="n">a</span>
     <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">album_id</span>
@@ -298,6 +274,8 @@
 <span class="p">;</span>
 </pre></div>
 </div>
+</li>
+<li><p>to show only albums that have greater than 10 tracks, use a <code class="docutils literal notranslate"><span class="pre">HAVING</span></code> clause along with aggregation</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">Album</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">track_number</span><span class="p">)</span> <span class="k">as</span> <span class="n">Tracks</span>
   <span class="k">FROM</span> <span class="n">track</span> <span class="k">AS</span> <span class="n">t</span>
   <span class="k">JOIN</span> <span class="n">album</span> <span class="k">AS</span> <span class="n">a</span>
@@ -308,9 +286,8 @@
 <span class="p">;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>using a HAVING clause along with aggregation</p></li>
-</ul>
+</li>
+<li><p>to show albums by a particular band, use a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">Album</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">track_number</span><span class="p">)</span> <span class="k">as</span> <span class="n">Tracks</span>
   <span class="k">FROM</span> <span class="n">track</span> <span class="k">AS</span> <span class="n">t</span>
   <span class="k">JOIN</span> <span class="n">album</span> <span class="k">AS</span> <span class="n">a</span>
@@ -322,17 +299,18 @@
 <span class="p">;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>a WHERE clause can also be used</p></li>
-<li><p>WHERE clause must be before GROUP BY because WHERE acts before aggregation</p></li>
-<li><p>HAVING after GROUP BY since it acts on aggregate data</p></li>
-<li><p>HAVING: aggregate data</p></li>
-<li><p>WHERE: non-aggregate data</p></li>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause must be before <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> because <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> acts before aggregation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HAVING</span></code> after <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> since it acts on aggregate data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HAVING</span></code>: aggregate data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code>: non-aggregate data</p></li>
 </ul>
 </div>
 <div class="section" id="aggregate-functions">
 <h2>8.2 Aggregate functions<a class="headerlink" href="#aggregate-functions" title="Permalink to this headline">¶</a></h2>
-<p>– world.db</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- world.db</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(*)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
 <ul>
@@ -346,29 +324,28 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">AVG(Population)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
 <ul>
-<li><p>AVG returns the average value of that column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AVG</span></code> returns the average value of that column</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Region,</span> <span class="pre">AVG(Population)</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">Region;</span></code></p>
 <ul>
-<li><p>GROUP BY to return AVG of each region</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> to return <code class="docutils literal notranslate"><span class="pre">AVG</span></code> of each region</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Region,</span> <span class="pre">MIN(Population),</span> <span class="pre">MAX(Population)</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">Region;</span></code></p>
 <ul>
-<li><p>MIN, MAX</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MIN</span></code>, <code class="docutils literal notranslate"><span class="pre">MAX</span></code></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">Region,</span> <span class="pre">SUM(Population)</span> <span class="pre">FROM</span> <span class="pre">Country</span> <span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">Region;</span></code></p>
 <ul>
-<li><p>SUM</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUM</span></code></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="distinct-aggregates">
 <h2>8.3 DISTINCT Aggregates<a class="headerlink" href="#distinct-aggregates" title="Permalink to this headline">¶</a></h2>
-<p>– world.db</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(HeadOfState)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
 <ul>
@@ -382,8 +359,8 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">COUNT(DISTINCT</span> <span class="pre">HeadOfState)</span> <span class="pre">FROM</span> <span class="pre">Country;</span></code></p>
 <ul>
-<li><p>to remove duplicate, use DISTINCT to count unique values</p></li>
-<li><p>older versions don’t support DISTINCT. some versions use keyword UNIQUE</p></li>
+<li><p>to remove duplicate, use <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code> to count unique values</p></li>
+<li><p>older versions don’t support <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code>. some versions use keyword <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -418,8 +395,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="Lecture_07_Dates_Times.html" title="previous page">7 Dates and Times</a>
-    <a class='right-next' id="next-link" href="Lecture_09_Transactions.html" title="next page">9 Transactions</a>
+    <a class='left-prev' id="prev-link" href="Lecture_07_Dates_Times.html" title="previous page">7. Dates and Times</a>
+    <a class='right-next' id="next-link" href="Lecture_09_Transactions.html" title="next page">9. Transactions</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

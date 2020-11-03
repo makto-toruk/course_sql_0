@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9 Transactions &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
+    <title>9. Transactions &#8212; Lecture notes for Understanding SQL, Bill Weinman</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -36,8 +36,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="10 Triggers" href="Lecture_10_Triggers.html" />
-    <link rel="prev" title="8 Aggregates" href="Lecture_08_Aggregates.html" />
+    <link rel="next" title="10. Triggers" href="Lecture_10_Triggers.html" />
+    <link rel="prev" title="8. Aggregates" href="Lecture_08_Aggregates.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -71,62 +71,62 @@
   <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_01_Introduction.html">
-   1 Installation
+   1. Installation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_02_SQL_Statement.html">
-   2 SQL Statement
+   2. SQL Statement
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_03_Fundamental_Concepts.html">
-   3 Fundamental Concepts
+   3. Fundamental Concepts
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_04_Relationships.html">
-   4 Relationships
+   4. Relationships
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_05_Strings.html">
-   5 Strings
+   5. Strings
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_06_Numbers.html">
-   6 Numbers
+   6. Numbers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_07_Dates_Times.html">
-   7 Dates and Times
+   7. Dates and Times
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_08_Aggregates.html">
-   8 Aggregates
+   8. Aggregates
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   9 Transactions
+   9. Transactions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_10_Triggers.html">
-   10 Triggers
+   10. Triggers
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_11_Views_Subselects.html">
-   11 Views and Subselects
+   11. Views and Subselects
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Lecture_12_CRUD_Application.html">
-   12 A Simple CRUD Application
+   12. A Simple CRUD Application
   </a>
  </li>
 </ul>
@@ -171,9 +171,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Lecture_09_Transactions.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/Lecture_09_Transactions.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -194,7 +194,7 @@
             href="https://github.com/makto-toruk/course_sql_0/issues/new?title=Issue%20on%20page%20%2FLecture_09_Transactions.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_09_Transactions.ipynb"><button
+        <a class="edit-button" href="https://github.com/makto-toruk/course_sql_0/edit/master/Lecture_09_Transactions.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -207,28 +207,6 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/makto-toruk/course_sql_0/master?urlpath=tree/Lecture_09_Transactions.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/makto-toruk/course_sql_0/blob/master/Lecture_09_Transactions.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
 
     </div>
 
@@ -251,7 +229,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#performance">
-   9.3 performance
+   9.3 Performance
   </a>
  </li>
 </ul>
@@ -265,14 +243,14 @@
               <div>
                 
   <div class="section" id="transactions">
-<h1>9 Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">¶</a></h1>
+<h1>9. Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="definition">
 <h2>9.1 definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>transaction is a group of operations that are handled as one unit of work.</p></li>
 <li><p>if any of these fails, the group is treated as failed. Db is restored to its state before group of operations</p>
 <ul>
-<li><p>applying only some operations may not make sense.</p></li>
+<li><p>this is useful when applying only some operations may not make sense.</p></li>
 </ul>
 </li>
 <li><p>can also speed up performance by performing for example many write operations together (before making checks in memory)</p></li>
@@ -280,30 +258,27 @@
 </div>
 <div class="section" id="id1">
 <h2>9.2 transactions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>– test.db</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetInventory</span> <span class="p">(</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- test.db</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetInventory</span> <span class="p">(</span>
   <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
   <span class="n">description</span> <span class="nb">TEXT</span><span class="p">,</span>
   <span class="n">onhand</span> <span class="nb">INTEGER</span> <span class="k">NOT</span> <span class="k">NULL</span>
 <span class="p">);</span>
-</pre></div>
-</div>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetSales</span> <span class="p">(</span>
+<span class="c1">--</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetSales</span> <span class="p">(</span>
   <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
   <span class="n">inv_id</span> <span class="nb">INTEGER</span><span class="p">,</span>
   <span class="n">quan</span> <span class="nb">INTEGER</span><span class="p">,</span>
   <span class="n">price</span> <span class="nb">INTEGER</span>
 <span class="p">);</span>
-</pre></div>
-</div>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetInventory</span> <span class="p">(</span> <span class="n">description</span><span class="p">,</span> <span class="n">onhand</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;rock&#39;</span><span class="p">,</span> <span class="mi">25</span> <span class="p">);</span>
+<span class="c1">--</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetInventory</span> <span class="p">(</span> <span class="n">description</span><span class="p">,</span> <span class="n">onhand</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;rock&#39;</span><span class="p">,</span> <span class="mi">25</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetInventory</span> <span class="p">(</span> <span class="n">description</span><span class="p">,</span> <span class="n">onhand</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;paper&#39;</span><span class="p">,</span> <span class="mi">25</span> <span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetInventory</span> <span class="p">(</span> <span class="n">description</span><span class="p">,</span> <span class="n">onhand</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="s1">&#39;scissors&#39;</span><span class="p">,</span> <span class="mi">25</span> <span class="p">);</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Suppose you have the above two tables. Suppose we sell something from inventory, both the Sales and Inventory table need to be updated. It doesn’t make sense to update only one.</p></li>
-</ul>
+<ul>
+<li><p>Suppose you have the above two tables. Suppose we sell something from inventory, both the Sales and Inventory table need to be updated. It doesn’t make sense to update only one.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">BEGIN</span> <span class="n">TRANSACTION</span><span class="p">;</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSales</span> <span class="p">(</span> <span class="n">inv_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span> <span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">500</span> <span class="p">);</span>
 <span class="k">UPDATE</span> <span class="n">widgetInventory</span> <span class="k">SET</span> <span class="n">onhand</span> <span class="o">=</span> <span class="p">(</span> <span class="n">onhand</span> <span class="o">-</span> <span class="mi">5</span> <span class="p">)</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -313,9 +288,11 @@
 <ul class="simple">
 <li><p>ensures both are performed.</p></li>
 </ul>
+</li>
+</ul>
 </div>
 <div class="section" id="performance">
-<h2>9.3 performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<h2>9.3 Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
 <p>Example:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">BEGIN</span> <span class="n">TRANSACTION</span><span class="p">;</span>
 <span class="c1">-- copy / paste 1,000 of these ...</span>
@@ -358,8 +335,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="Lecture_08_Aggregates.html" title="previous page">8 Aggregates</a>
-    <a class='right-next' id="next-link" href="Lecture_10_Triggers.html" title="next page">10 Triggers</a>
+    <a class='left-prev' id="prev-link" href="Lecture_08_Aggregates.html" title="previous page">8. Aggregates</a>
+    <a class='right-next' id="next-link" href="Lecture_10_Triggers.html" title="next page">10. Triggers</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
