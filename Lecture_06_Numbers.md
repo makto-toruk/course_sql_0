@@ -3,15 +3,14 @@
 ## 6.1 Numeric Types
 - Datatypes differ from system-to-system. This chapter covers how it works in SQLite
 - Fundamental numeric types: Integers and Real numbers
-    - Integer: INTEGER, DECIMAL, MONEY
-    - Real: REAL, FLOAT (sacrifice accuracy for scale)
+    - Integer: `INTEGER`, `DECIMAL`, `MONEY`
+    - Real: `REAL`, `FLOAT` (sacrifice accuracy for scale)
 - Precision vs Scale
     - precision: how many digits are represented
     - scale: magnitude of numbers are represented
         - floating point: large magnitude, few significant digits
         
 ## 6.2 typeof
-
 - `SELECT TYPEOF( 1 + 1 );`
     - returns integer
 - `SELECT TYPEOF( 1 + 1.0 );`
@@ -22,7 +21,6 @@
     - returns integer ?!?!?
     
 ## 6.3 INTEGER division
-
 - `SELECT 1 / 2;`
     - returns 0 since 1 is an integer
 - `SELECT 1.0 / 2;`
