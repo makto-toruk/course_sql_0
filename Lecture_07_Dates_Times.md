@@ -6,11 +6,9 @@
 - stored as UTC (coordinated universal time)
     - allows unambigious date time calculations across geographical locations 
 - SQL date and time types
-    - DATE, TIME, DATETIME, YEAR, INTERVAL
+    - `DATE`, `TIME`, `DATETIME`, `YEAR`, `INTERVAL`
 
 ## 7.2 DATE/TIME functions
--- :memory:
-
 - `SELECT DATETIME('now');`
     - returns current data and time in UTC
     - SQL uses a string to represent this
@@ -18,9 +16,8 @@
     - returns only date
 - `SELECT TIME('now');`
     - returns only time
-<br><br>
-Datetime arithmetic
 
+### Datetime arithmetic
 - `SELECT DATETIME('now', '+1 day');`
     - now + 1 day
 - `SELECT DATETIME('now', '+3 days');`
