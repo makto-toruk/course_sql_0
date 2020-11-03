@@ -8,26 +8,28 @@
     - standard SQL: `SELECT 'THIS' || ' & ' || 'that';`
     - other SQLs may have slightly different operators.
 - String functions:
-    - SUBSTR, LENGTH, TRIM, UPPER, LOWER
+    - `SUBSTR`, `LENGTH`, `TRIM`, `UPPER`, `LOWER`
     - these vary from system-to-system
 
 ## 5.2 LENGTH
+```sql
 -- world.db
-
+```
 - `SELECT LENGTH('string');`
     - returns 6
 - `SELECT Name, LENGTH(Name) AS Len FROM City ORDER BY Len DESC;`
     - can be ordered by length
 
 ## 5.3 SUBSTR
--- album.db
-
 - `SELECT SUBSTR('this string', 6);`
+    - returns `string`.
     - second argument is starting position of substring (starting from 1)
 - `SELECT SUBSTR('this string', 6, 3);`
+    - returns `str`
     - third argument is number of characters to return
 
 ```sql
+-- album.db
 SELECT released,
     SUBSTR(released, 1, 4) AS year,
     SUBSTR(released, 6, 2) AS month,
@@ -37,7 +39,7 @@ SELECT released,
 ;
 ```
 - notice that you can order by released (or date)
-- SQL standard doesn't include a SUBSTR but most major systems have this feature (name and usage may differ)
+- SQL standard doesn't include a `SUBSTR` but most major systems have this feature (name and usage may differ)
     
 ## 5.4 TRIM
 
@@ -51,7 +53,9 @@ SELECT released,
     - second argument specifies what character to remove (space is default)
     
 ## 5.5 UPPER/LOWER
+```sql
 -- world.db
+```
 Used for normalizing data which makes comparing strings more effective.
 
 - `SELECT 'StRiNg' = 'string';`
