@@ -246,19 +246,25 @@
 <h1>10. Triggers<a class="headerlink" href="#triggers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="update-triggers">
 <h2>10.1 update triggers<a class="headerlink" href="#update-triggers" title="Permalink to this headline">¶</a></h2>
-<p>– test.db</p>
-<p>Example tables:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetCustomer</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">name</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">last_order_id</span> <span class="nb">INT</span> <span class="p">);</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetSale</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">item_id</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">quan</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">price</span> <span class="nb">INT</span> <span class="p">);</span><span class="o">`</span>
-
-<span class="o">```</span><span class="k">sql</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- test.db</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetCustomer</span> <span class="p">(</span> 
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> 
+    <span class="n">name</span> <span class="nb">TEXT</span><span class="p">,</span> 
+    <span class="n">last_order_id</span> <span class="nb">INT</span> <span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetSale</span> <span class="p">(</span> 
+    <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> 
+    <span class="n">item_id</span> <span class="nb">INT</span><span class="p">,</span> 
+    <span class="n">customer_id</span> <span class="nb">INT</span><span class="p">,</span> 
+    <span class="n">quan</span> <span class="nb">INT</span><span class="p">,</span> 
+    <span class="n">price</span> <span class="nb">INT</span> <span class="p">);</span>
+<span class="c1">--</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetCustomer</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetCustomer</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Sally&#39;</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetCustomer</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Fred&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p><br><br>
-If you want to manipulate a table whenever another table is updated, use a trigger.</p>
+<ul>
+<li><p>To manipulate one table whenever another table is updated, use a trigger.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">newWidgetSale</span> <span class="k">AFTER</span> <span class="k">INSERT</span> <span class="k">ON</span> <span class="n">widgetSale</span>
 <span class="k">BEGIN</span>
 <span class="k">UPDATE</span> <span class="n">widgetCustomer</span> <span class="k">SET</span> <span class="n">last_order_id</span> <span class="o">=</span> <span class="k">NEW</span><span class="p">.</span><span class="n">id</span> <span class="k">WHERE</span> <span class="n">widgetCustomer</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="k">NEW</span><span class="p">.</span><span class="n">customer_id</span><span class="p">;</span>
@@ -267,8 +273,10 @@ If you want to manipulate a table whenever another table is updated, use a trigg
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>NEW keyword refers to a virtual row</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NEW</span></code> keyword refers to a virtual row</p></li>
 </ul>
+</li>
+<li><p>Check the two tables after some insertions</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1995</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1495</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2995</span><span class="p">);</span>
@@ -276,50 +284,76 @@ If you want to manipulate a table whenever another table is updated, use a trigg
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">widgetCustomer</span><span class="p">;</span>
 </pre></div>
 </div>
+</li>
+</ul>
 </div>
 <div class="section" id="preventing-updates">
 <h2>10.2 preventing updates<a class="headerlink" href="#preventing-updates" title="Permalink to this headline">¶</a></h2>
-<p>– test.db</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetSale</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">integer</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> <span class="n">item_id</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">customer_id</span> <span class="nb">INTEGER</span><span class="p">,</span> <span class="n">quan</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">price</span> <span class="nb">INT</span><span class="p">,</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- test.db</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetSale</span> <span class="p">(</span> 
+    <span class="n">id</span> <span class="nb">integer</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> 
+    <span class="n">item_id</span> <span class="nb">INT</span><span class="p">,</span> 
+    <span class="n">customer_id</span> <span class="nb">INTEGER</span><span class="p">,</span> 
+    <span class="n">quan</span> <span class="nb">INT</span><span class="p">,</span> 
+    <span class="n">price</span> <span class="nb">INT</span><span class="p">,</span>
     <span class="n">reconciled</span> <span class="nb">INT</span> <span class="p">);</span>
+<span class="c1">--</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">reconciled</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1995</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">reconciled</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1495</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">reconciled</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2995</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">widgetSale</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Here a trigger is defined to prevent an update.</p>
+<ul>
+<li><p>You can also define a trigger to prevent an update.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">updateWidgetSale</span> <span class="k">BEFORE</span> <span class="k">UPDATE</span> <span class="k">ON</span> <span class="n">widgetSale</span>
 <span class="k">BEGIN</span>
 <span class="k">SELECT</span> <span class="n">RAISE</span><span class="p">(</span><span class="k">ROLLBACK</span><span class="p">,</span> <span class="s1">&#39;cannot update table &quot;widgetSale&quot;&#39;</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">widgetSale</span>
-<span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="k">NEW</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">reconciled</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="k">NEW</span><span class="p">.</span><span class="n">id</span> <span class="k">AND</span> <span class="n">reconciled</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">END</span>
 <span class="p">;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>the following then raises an error: ‘cannot update table “widgetSale”’</p></li>
-</ul>
+</li>
+<li><p>the following then raises an error: ‘cannot update table “widgetSale”’</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">BEGIN</span> <span class="n">TRANSACTION</span><span class="p">;</span>
 <span class="k">UPDATE</span> <span class="n">widgetSale</span> <span class="k">SET</span> <span class="n">quan</span> <span class="o">=</span> <span class="mi">9</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="k">END</span> <span class="n">TRANSACTION</span><span class="p">;</span>
 </pre></div>
 </div>
+</li>
+</ul>
 </div>
 <div class="section" id="timestamps">
 <h2>10.3 timestamps<a class="headerlink" href="#timestamps" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you have the following tables:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetCustomer</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">integer</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> <span class="n">name</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">last_order_id</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">stamp</span> <span class="nb">TEXT</span> <span class="p">);</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetSale</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">integer</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> <span class="n">item_id</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">customer_id</span> <span class="nb">INTEGER</span><span class="p">,</span> <span class="n">quan</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">price</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">stamp</span> <span class="nb">TEXT</span> <span class="p">);</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetLog</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">integer</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> <span class="n">stamp</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">event</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">username</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">tablename</span> <span class="nb">TEXT</span><span class="p">,</span> <span class="n">table_id</span> <span class="nb">INT</span><span class="p">);</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetCustomer</span> <span class="p">(</span> 
+    <span class="n">id</span> <span class="nb">integer</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> 
+    <span class="n">name</span> <span class="nb">TEXT</span><span class="p">,</span> 
+    <span class="n">last_order_id</span> <span class="nb">INT</span><span class="p">,</span> 
+    <span class="n">stamp</span> <span class="nb">TEXT</span> <span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetSale</span> <span class="p">(</span> 
+    <span class="n">id</span> <span class="nb">integer</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> 
+    <span class="n">item_id</span> <span class="nb">INT</span><span class="p">,</span> 
+    <span class="n">customer_id</span> <span class="nb">INTEGER</span><span class="p">,</span> 
+    <span class="n">quan</span> <span class="nb">INT</span><span class="p">,</span> 
+    <span class="n">price</span> <span class="nb">INT</span><span class="p">,</span> 
+    <span class="n">stamp</span> <span class="nb">TEXT</span> <span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">widgetLog</span> <span class="p">(</span> 
+    <span class="n">id</span> <span class="nb">integer</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> 
+    <span class="n">stamp</span> <span class="nb">TEXT</span><span class="p">,</span> 
+    <span class="n">event</span> <span class="nb">TEXT</span><span class="p">,</span> 
+    <span class="n">username</span> <span class="nb">TEXT</span><span class="p">,</span> 
+    <span class="n">tablename</span> <span class="nb">TEXT</span><span class="p">,</span> 
+    <span class="n">table_id</span> <span class="nb">INT</span><span class="p">);</span>
+<span class="c1">--</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetCustomer</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetCustomer</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Sally&#39;</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetCustomer</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;Fred&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>You can set a datetime stamp on when an update was made.</p></li>
-</ul>
+<ul>
+<li><p>You can set a datetime stamp on when an update was made.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">stampSale</span> <span class="k">AFTER</span> <span class="k">INSERT</span> <span class="k">ON</span> <span class="n">widgetSale</span>
 <span class="k">BEGIN</span>
 <span class="k">UPDATE</span> <span class="n">widgetSale</span> <span class="k">SET</span> <span class="n">stamp</span> <span class="o">=</span> <span class="n">DATETIME</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">)</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="k">NEW</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
@@ -334,13 +368,14 @@ If you want to manipulate a table whenever another table is updated, use a trigg
 <ul class="simple">
 <li><p>notice that several updates are made using this trigger</p></li>
 </ul>
+</li>
+<li><p>this updates all the tables with timestamps.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1995</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1495</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">widgetSale</span> <span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">,</span> <span class="n">quan</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2995</span><span class="p">);</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>this updates all the tables with timestamps.</p></li>
+</li>
 </ul>
 </div>
 </div>
